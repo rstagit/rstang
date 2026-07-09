@@ -10,7 +10,7 @@
     <string name="migration_fail">فشلت عملية ترحيل البيانات!</string>
     <string name="pull_down_to_refresh">Please pull down to refresh!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">إيقاف</string>
     <string name="toast_permission_denied">تعذر الحصول على الإذن</string>
     <string name="toast_permission_denied_notification">Unable to obtain the notification permission</string>
@@ -20,7 +20,7 @@
     <string name="toast_services_success">نجاح بدء الخدمات</string>
     <string name="toast_services_failure">فشل بدء الخدمات</string>
 
-    <!--ServerActivity-->
+    
     <string name="title_server">ملف التكوين</string>
     <string name="menu_item_add_config">إضافة تكوين</string>
     <string name="menu_item_save_config">حفظ التكوين</string>
@@ -124,7 +124,7 @@
     <string name="toast_fetch_cert_sha256_success">Certificate fingerprint fetched successfully</string>
     <string name="toast_fetch_cert_sha256_failed">Failed to fetch certificate fingerprint</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">فشل نسخ الملف، يرجى استخدام مدير الملفات</string>
     <string name="menu_item_add_asset">إضافة أصل</string>
     <string name="menu_item_add_file">إضافة ملفات</string>
@@ -137,7 +137,7 @@
     <string name="msg_remark_is_duplicate">الملاحظات موجودة بالفعل</string>
     <string name="asset_geo_files_sources">Geo files source (optional)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">جار التحميل</string>
     <string name="menu_item_search">بحث</string>
     <string name="menu_item_select_all">تحديد الكل</string>
@@ -152,7 +152,7 @@
     <string name="per_app_proxy_settings_enable">Enable per-app</string>
 
 
-    <!-- Preferences -->
+    
     <string name="title_settings">الإعدادات</string>
     <string name="title_advanced">إعدادات متقدمة</string>
     <string name="title_core_settings">إعدادات النواة</string>
@@ -254,7 +254,7 @@
 
     <string name="title_pref_group_all_display">Enable show all groups</string>
     <string name="summary_pref_group_all_display">Add an extra "All Tabs" page</string>
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">ملاحظات</string>
     <string name="summary_pref_feedback">ملاحظات التحسينات أو الأخطاء إلى GitHub</string>
     <string name="summary_pref_tg_group">الانضمام إلى مجموعة Telegram</string>
@@ -327,7 +327,7 @@
     <string name="tasker_start_service">بدء الخدمة</string>
     <string name="tasker_setting_confirm">تأكيد</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">استراتيجية النطاق</string>
     <string name="routing_settings_title">إعدادات التوجيه</string>
     <string name="routing_settings_tips">افصل بعلامة الفاصلة (,) واختر أحد: domain أو ip أو process</string>
@@ -387,7 +387,7 @@
     <string name="server_proxy_chain_members_insufficient">عدد الاعضاء غير كاف</string>
     <string name="server_proxy_chain_members_invalid">اعضاء سلسلة غير صالحين: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">Backup &amp; Restore</string>
     <string name="title_configuration_backup">نسخ التكوين احتياطيًا</string>
     <string name="title_configuration_restore">استعادة التكوين</string>

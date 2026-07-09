@@ -64,7 +64,7 @@ class UserAssetActivity : HelperBaseActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    // Use when to streamline the option selection
+    
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.add_file -> showFileChooser().let { true }
         R.id.add_url -> startActivity(Intent(this, UserAssetUrlActivity::class.java)).let { true }
@@ -156,7 +156,7 @@ class UserAssetActivity : HelperBaseActivity() {
                 toast(R.string.toast_invalid_url)
                 return false
             }
-            // Send URL to UserAssetUrlActivity for Processing
+            
             startActivity(
                 Intent(this, UserAssetUrlActivity::class.java)
                     .putExtra(UserAssetUrlActivity.ASSET_URL_QRCODE, url)
@@ -226,7 +226,7 @@ class UserAssetActivity : HelperBaseActivity() {
                     initAssets()
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    // do nothing
+                    
                 }
                 .show()
         }

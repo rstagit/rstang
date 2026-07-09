@@ -1,9 +1,6 @@
 package com.v2ray.ang.enums
 
-/**
- * Enum defining different notification channels.
- * Each channel has a unique channelId, notificationId, and display name.
- */
+
 enum class NotificationChannelType(
     val channelId: String,
     val channelName: String,
@@ -23,5 +20,10 @@ enum class NotificationChannelType(
         channelId = "core_proxy_channel",
         channelName = "Core Proxy Service",
         notificationId = 14
+    ),
+    RSTA_SCANNER(
+        channelId = "rsta_scanner_channel",
+        channelName = "RSTA Scanner Service",
+        notificationId = 15
     )
 }

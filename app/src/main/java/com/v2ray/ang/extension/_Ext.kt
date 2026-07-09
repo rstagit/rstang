@@ -17,56 +17,32 @@ import java.util.Locale
 val Context.v2RayApplication: AngApplication?
     get() = applicationContext as? AngApplication
 
-/**
- * Shows a toast message with the given resource ID.
- *
- * @param message The resource ID of the message to show.
- */
+
 fun Context.toast(message: Int) {
     Toasty.normal(this, message).show()
 }
 
-/**
- * Shows a toast message with the given text.
- *
- * @param message The text of the message to show.
- */
+
 fun Context.toast(message: CharSequence) {
     Toasty.normal(this, message).show()
 }
 
-/**
- * Shows a toast message with the given resource ID.
- *
- * @param message The resource ID of the message to show.
- */
+
 fun Context.toastSuccess(message: Int) {
     Toasty.success(this, message, Toast.LENGTH_SHORT, true).show()
 }
 
-/**
- * Shows a toast message with the given text.
- *
- * @param message The text of the message to show.
- */
+
 fun Context.toastSuccess(message: CharSequence) {
     Toasty.success(this, message, Toast.LENGTH_SHORT, true).show()
 }
 
-/**
- * Shows a toast message with the given resource ID.
- *
- * @param message The resource ID of the message to show.
- */
+
 fun Context.toastError(message: Int) {
     Toasty.error(this, message, Toast.LENGTH_SHORT, true).show()
 }
 
-/**
- * Shows a toast message with the given text.
- *
- * @param message The text of the message to show.
- */
+
 fun Context.toastError(message: CharSequence) {
     Toasty.error(this, message, Toast.LENGTH_SHORT, true).show()
 }
@@ -74,18 +50,10 @@ fun Context.toastError(message: CharSequence) {
 const val THRESHOLD = 1000L
 const val DIVISOR = 1024.0
 
-/**
- * Converts a Long value to a speed string.
- *
- * @return The speed string.
- */
+
 fun Long.toSpeedString(): String = this.toTrafficString() + "/s"
 
-/**
- * Converts a Long value to a traffic string.
- *
- * @return The traffic string.
- */
+
 fun Long.toTrafficString(): String {
     val units = arrayOf("B", "KB", "MB", "GB", "TB", "PB")
     var size = this.toDouble()
@@ -100,34 +68,16 @@ fun Long.toTrafficString(): String {
 val URI.idnHost: String
     get() = host?.replace("[", "")?.replace("]", "").orEmpty()
 
-/**
- * Removes all whitespace from the string.
- *
- * @return The string without whitespace.
- */
+
 fun String?.removeWhiteSpace(): String? = this?.replace(" ", "")
 
-/**
- * Returns null if the string is null or blank, otherwise returns the string itself.
- *
- * @return The string or null.
- */
+
 fun String?.nullIfBlank(): String? = this?.takeIf { it.isNotBlank() }
 
-/**
- * Converts the string to a Long value, or returns 0 if the conversion fails.
- *
- * @return The Long value.
- */
+
 fun String.toLongEx(): Long = toLongOrNull() ?: 0
 
-/**
- * Listens for package changes and executes a callback when a change occurs.
- *
- * @param onetime Whether to unregister the receiver after the first callback.
- * @param callback The callback to execute when a package change occurs.
- * @return The BroadcastReceiver that was registered.
- */
+
 fun Context.listenForPackageChanges(onetime: Boolean = true, callback: () -> Unit) =
     object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -150,33 +100,19 @@ fun Context.listenForPackageChanges(onetime: Boolean = true, callback: () -> Uni
         }
     }
 
-/**
- * Retrieves a serializable object from the Bundle.
- *
- * @param key The key of the serializable object.
- * @return The serializable object, or null if not found.
- */
+
 inline fun <reified T : Serializable> Bundle.serializable(key: String): T? = when {
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializable(key, T::class.java)
     else -> @Suppress("DEPRECATION") getSerializable(key) as? T
 }
 
-/**
- * Retrieves a serializable object from the Intent.
- *
- * @param key The key of the serializable object.
- * @return The serializable object, or null if not found.
- */
+
 inline fun <reified T : Serializable> Intent.serializable(key: String): T? = when {
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializableExtra(key, T::class.java)
     else -> @Suppress("DEPRECATION") getSerializableExtra(key) as? T
 }
 
-/**
- * Checks if the CharSequence is not null and not empty.
- *
- * @return True if the CharSequence is not null and not empty, false otherwise.
- */
+
 fun CharSequence?.isNotNullEmpty(): Boolean = !this.isNullOrBlank()
 
 fun String.concatUrl(vararg paths: String): String {
@@ -192,9 +128,7 @@ fun String.concatUrl(vararg paths: String): String {
     return builder.toString()
 }
 
-/**
- * Helper function to match text either by Regex or literal string.
- */
+
 fun String.matchesPattern(regex: Regex?, keyword: String?, ignoreCase: Boolean = true): Boolean {
     if (keyword.isNullOrEmpty()) {
         return true
@@ -203,20 +137,12 @@ fun String.matchesPattern(regex: Regex?, keyword: String?, ignoreCase: Boolean =
         ?: this.contains(keyword, ignoreCase = ignoreCase)
 }
 
-/**
- * Checks if the config type is a group type (PolicyGroup or ProxyChain).
- *
- * @return True if the config type is PolicyGroup or ProxyChain, false otherwise.
- */
+
 fun EConfigType.isGroupType(): Boolean {
     return this == EConfigType.POLICYGROUP || this == EConfigType.PROXYCHAIN
 }
 
-/**
- * Checks if the config type is a complex type (Custom, PolicyGroup, or ProxyChain).
- *
- * @return True if the config type is Custom, PolicyGroup, or ProxyChain, false otherwise.
- */
+
 fun EConfigType.isComplexType(): Boolean {
     return this == EConfigType.CUSTOM || this == EConfigType.POLICYGROUP || this == EConfigType.PROXYCHAIN
 }

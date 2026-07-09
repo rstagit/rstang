@@ -21,18 +21,11 @@ import java.util.concurrent.TimeUnit
 
 object SubscriptionUpdater {
 
-    // -------------------------------------------------------------------------
-    // Public API — the only methods external callers should ever use
-    // -------------------------------------------------------------------------
+    
+    
+    
 
-    /**
-     * Sync all subscription tasks with current settings.
-     *
-     * Startup/boot callers should use the default mode so existing periodic work is kept.
-     * Use forceReschedule=true only when the next run time needs to be recalculated from
-     * the latest persisted subscription state (for example after a manual refresh).
-     * Call from: MainActivity.onCreate(), BootReceiver.onReceive().
-     */
+    
     fun sync(
         context: Context = AngApplication.application,
         forceReschedule: Boolean = false
@@ -58,10 +51,7 @@ object SubscriptionUpdater {
         )
     }
 
-    /**
-     * Sync a single subscription's task.
-     * Call from: SubEditActivity after saving, after a manual update (to reset the timer).
-     */
+    
     fun syncOne(context: Context = AngApplication.application, subId: String) {
         val subItem = MmkvManager.decodeSubscription(subId) ?: return
         scheduleOne(
@@ -72,18 +62,15 @@ object SubscriptionUpdater {
         )
     }
 
-    /**
-     * Cancel the auto-update task for a single subscription.
-     * Call from: when a subscription is deleted.
-     */
+    
     fun cancelOne(context: Context = AngApplication.application, subId: String) {
         RemoteWorkManager.getInstance(context)
             .cancelUniqueWork(taskName(subId))
     }
 
-    // -------------------------------------------------------------------------
-    // Internal scheduling logic
-    // -------------------------------------------------------------------------
+    
+    
+    
 
     private fun taskName(subId: String) = "${AppConfig.SUBSCRIPTION_UPDATE_TASK_NAME}_$subId"
 
@@ -107,7 +94,7 @@ object SubscriptionUpdater {
             subItem.updateInterval
         )
 
-        // Base initial delay on the last successful update time persisted in subscription.
+        
         val lastUpdated = subItem.lastUpdated
         val intervalMillis = intervalMinutes * 60 * 1000L
         val now = System.currentTimeMillis()
@@ -141,9 +128,9 @@ object SubscriptionUpdater {
         )
     }
 
-    // -------------------------------------------------------------------------
-    // Worker
-    // -------------------------------------------------------------------------
+    
+    
+    
 
     private const val KEY_SUB_ID = "subId"
 
@@ -173,7 +160,7 @@ object SubscriptionUpdater {
 
             val sub = SubscriptionCache(subId, subItem)
 
-            // Notify about update start
+            
             NotificationHelper.notify(
                 NotificationChannelType.SUBSCRIPTION_UPDATE,
                 applicationContext,
@@ -184,7 +171,7 @@ object SubscriptionUpdater {
             LogUtil.i(AppConfig.TAG, "SubscriptionUpdater automatic update: ---${sub.subscription.remarks}")
             AngConfigManager.updateConfigViaSub(sub)
 
-            // Clear notification
+            
             NotificationHelper.cancel(NotificationChannelType.SUBSCRIPTION_UPDATE, applicationContext)
 
             return Result.success()

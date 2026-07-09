@@ -655,6 +655,7 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.rsta_spoof_setting -> requestActivityLauncher.launch(Intent(this, RstaSpoofSettingActivity::class.java))
+            R.id.rsta_scanner_setting -> requestActivityLauncher.launch(Intent(this, RstaScannerActivity::class.java))
             R.id.sub_setting -> requestActivityLauncher.launch(Intent(this, SubSettingActivity::class.java))
             R.id.per_app_proxy_settings -> requestActivityLauncher.launch(Intent(this, PerAppProxyActivity::class.java))
             R.id.routing_setting -> requestActivityLauncher.launch(Intent(this, RoutingSettingActivity::class.java))

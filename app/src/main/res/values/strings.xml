@@ -11,7 +11,7 @@
     <string name="migration_fail">Data migration failed!</string>
     <string name="pull_down_to_refresh">Please pull down to refresh!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">Stop</string>
     <string name="toast_permission_denied">Unable to obtain the permission</string>
     <string name="toast_permission_denied_notification">Unable to obtain the notification permission</string>
@@ -21,7 +21,7 @@
     <string name="toast_services_success">Start Services Success</string>
     <string name="toast_services_failure">Start Services Failure</string>
 
-    <!--ServerActivity-->
+    
     <string name="title_server">Config</string>
     <string name="menu_item_add_config">Add config</string>
     <string name="menu_item_save_config">Save config</string>
@@ -145,7 +145,7 @@
     <string name="toast_fetch_cert_sha256_success">Certificate fingerprint fetched successfully</string>
     <string name="toast_fetch_cert_sha256_failed">Failed to fetch certificate fingerprint</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">File copy failed, please use File Manager</string>
     <string name="menu_item_add_asset">Add asset</string>
     <string name="menu_item_add_file">Add files</string>
@@ -158,7 +158,7 @@
     <string name="msg_remark_is_duplicate">The remarks already exists</string>
     <string name="asset_geo_files_sources">Geo files source (optional)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">Loading</string>
     <string name="menu_item_search">Search</string>
     <string name="menu_item_select_all">Select all</string>
@@ -173,7 +173,7 @@
     <string name="per_app_proxy_settings_enable">Enable per-app</string>
     <string name="app_picker_unknown_app">Unknown app (unidentified UID)</string>
 
-    <!-- Preferences -->
+    
     <string name="title_settings">Settings</string>
     <string name="title_advanced">Advanced Settings</string>
     <string name="title_core_settings">Core Settings</string>
@@ -280,7 +280,7 @@
     <string name="title_pref_group_all_display">Enable show all groups</string>
     <string name="summary_pref_group_all_display">Add an extra "All Tabs" page</string>
 
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">Feedback</string>
     <string name="summary_pref_feedback">Feedback enhancements or bugs to GitHub</string>
     <string name="summary_pref_tg_group">Join Telegram Group</string>
@@ -320,6 +320,55 @@
     <string name="title_del_invalid_config">Delete invalid config</string>
     <string name="title_export_all">Export configs to clipboard</string>
     <string name="title_rsta_spoof_setting">RSTA Spoof</string>
+    <string name="title_rsta_scanner_setting">RSTA Scanner</string>
+    <string name="title_rsta_scanner_ip_range">Select IP Range</string>
+    <string name="rsta_scanner_telegram_hint">Telegram channel for updates and bug reports: @rstatel</string>
+    <string name="rsta_scanner_label_cidr">CIDR address</string>
+    <string name="rsta_scanner_btn_ip_range_settings">IP range settings</string>
+    <string name="rsta_scanner_hint_cidr">"Example:\n104.16.174.0/24\n104.17.0.0/24"</string>
+    <string name="rsta_scanner_hint_cidr_multi">Enter multiple ranges separated by space, comma, or newline</string>
+    <string name="rsta_scanner_label_config">V2Ray config (vmess/vless/trojan/ss)</string>
+    <string name="rsta_scanner_hint_config">vmess:// or vless:// or trojan:// or ss://</string>
+    <string name="rsta_scanner_hint_config_note">Enter a working or already-filtered config</string>
+    <string name="rsta_scanner_label_ports">Ports (multiple selection allowed)</string>
+    <string name="rsta_scanner_hint_custom_ports">Custom ports (optional) — example: 8080,9443</string>
+    <string name="rsta_scanner_hint_custom_ports_note">Separate custom ports with commas. Turn the VPN off, or use tunnel-free mode, while scanning.</string>
+    <string name="rsta_scanner_btn_start">Start scan</string>
+    <string name="rsta_scanner_btn_stop">Stop scan</string>
+    <string name="rsta_scanner_processed_count">Processed: %1$d / %2$d</string>
+    <string name="rsta_scanner_found_count">Found: %1$d</string>
+    <string name="rsta_scanner_btn_copy_all_ips">Copy all IPs</string>
+    <string name="rsta_scanner_btn_copy_all_configs">Copy all configs</string>
+    <string name="rsta_scanner_btn_top10_ping">Copy top 10 by ping</string>
+    <string name="rsta_scanner_btn_add_top10_rstang">Add top 10 configs to RSTA NG</string>
+    <string name="rsta_scanner_added_to_rstang">%1$d configs added to RSTA NG as a new subscription</string>
+    <string name="rsta_scanner_subscription_name">RSTA Scan %1$s</string>
+    <string name="rsta_scanner_label_count">Count:</string>
+    <string name="rsta_scanner_btn_speed_test">Speed test top results</string>
+    <string name="rsta_scanner_btn_speed_test_testing">Testing…</string>
+    <string name="rsta_scanner_btn_speed_test_default">Speed test top 20</string>
+    <string name="rsta_scanner_btn_stop_speed_test">Stop</string>
+    <string name="rsta_scanner_btn_copy_speed_results">Copy results</string>
+    <string name="rsta_scanner_btn_copy_speed_ips">Copy tested IPs</string>
+    <string name="rsta_scanner_speed_progress">Speed test: %1$d of %2$d</string>
+    <string name="rsta_scanner_no_results">No healthy IP was found\nProcessed: %1$d / %2$d</string>
+    <string name="rsta_scanner_copied">Copied</string>
+    <string name="rsta_scanner_err_no_cidr">Please enter at least one CIDR. Example: 104.16.174.0/24</string>
+    <string name="rsta_scanner_err_invalid_cidr">Invalid CIDR format: %1$s</string>
+    <string name="rsta_scanner_err_no_config">Please enter a config</string>
+    <string name="rsta_scanner_err_unsupported_config">"Unsupported config format.\nOnly vmess://, vless://, trojan://, ss:// are accepted"</string>
+    <string name="rsta_scanner_err_no_port">Select or enter at least one port</string>
+    <string name="rsta_scanner_err_invalid_port">Invalid custom port: %1$s (must be between 1 and 65535)</string>
+    <string name="rsta_scanner_notif_scanning">Scanning…</string>
+    <string name="rsta_scanner_btn_copy_ip">Copy IP</string>
+    <string name="rsta_scanner_btn_copy_config">Copy config</string>
+    <string name="rsta_scanner_selected_count">%1$d selected</string>
+    <string name="rsta_scanner_hint_search_range">Search ranges (example: 104.16)</string>
+    <string name="rsta_scanner_btn_select_all">Select all</string>
+    <string name="rsta_scanner_btn_deselect_all">Deselect all</string>
+    <string name="rsta_scanner_btn_confirm_selection">Apply selection</string>
+    <string name="rsta_scanner_header_curated">Popular ranges (%1$d items)</string>
+    <string name="rsta_scanner_header_others">Other Cloudflare ranges (%1$d items)</string>
     <string name="title_sub_setting">Subscription group setting</string>
     <string name="sub_setting_remarks">remarks</string>
     <string name="sub_setting_url">Optional URL</string>
@@ -353,7 +402,7 @@
     <string name="tasker_start_service">Start Service</string>
     <string name="tasker_setting_confirm">Confirm</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">Domain strategy</string>
     <string name="routing_settings_title">Routing Settings</string>
     <string name="routing_settings_tips">Separated by commas(,), \nchoose domain or ip or process</string>
@@ -418,7 +467,7 @@
     <string name="server_proxy_chain_members_insufficient">Insufficient members</string>
     <string name="server_proxy_chain_members_invalid">Invalid chain members: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">Backup &amp; Restore</string>
     <string name="title_configuration_backup">Backup config</string>
     <string name="title_configuration_restore">Restore config</string>

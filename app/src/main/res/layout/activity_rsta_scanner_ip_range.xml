@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|end"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tv_selected_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rsta_scanner_selected_count"
+            android:textColor="@color/rsta_scanner_found_count"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/bg_rsta_scanner_input"
+        android:hint="@string/rsta_scanner_hint_search_range"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textColorHint="?android:attr/textColorTertiary"
+        android:textSize="13sp"
+        android:paddingHorizontal="12dp"
+        android:inputType="text"
+        android:textDirection="ltr"
+        android:singleLine="true" />
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp">
+
+        <Button
+            android:id="@+id/btn_select_all"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="@string/rsta_scanner_btn_select_all"
+            android:textSize="12sp"
+            android:backgroundTint="@color/rsta_scanner_btn_select_all"
+            android:layout_marginEnd="6dp" />
+
+        <Button
+            android:id="@+id/btn_deselect_all"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="@string/rsta_scanner_btn_deselect_all"
+            android:textSize="12sp"
+            android:backgroundTint="@color/rsta_scanner_btn_deselect_all" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ranges"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+
+    <Button
+        android:id="@+id/btn_confirm_selection"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_margin="12dp"
+        android:text="@string/rsta_scanner_btn_confirm_selection"
+        android:textSize="14sp"
+        android:backgroundTint="@color/rsta_scanner_btn_scan" />
+
+</LinearLayout>

@@ -10,7 +10,7 @@
     <string name="migration_fail">Перенос данных не выполнен!</string>
     <string name="pull_down_to_refresh">Потяните вниз для обновления!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">Остановить</string>
     <string name="toast_permission_denied">Разрешение не получено</string>
     <string name="toast_permission_denied_notification">Разрешение на отображение уведомлений не получено</string>
@@ -20,7 +20,7 @@
     <string name="toast_services_success">Службы успешно запущены</string>
     <string name="toast_services_failure">Сбой при запуске служб</string>
 
-    <!--ServerActivity-->
+    
     <string name="title_server">Профиль</string>
     <string name="menu_item_add_config">Добавить профиль</string>
     <string name="menu_item_save_config">Сохранить профиль</string>
@@ -126,7 +126,7 @@
     <string name="toast_fetch_cert_sha256_success">Отпечаток сертификата успешно получен</string>
     <string name="toast_fetch_cert_sha256_failed">Отпечаток сертификата не получен</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">Невозможно скопировать файл, используйте файловый менеджер</string>
     <string name="menu_item_add_asset">Добавить ресурс</string>
     <string name="menu_item_add_file">Добавить файлы</string>
@@ -139,7 +139,7 @@
     <string name="msg_remark_is_duplicate">Название уже существует</string>
     <string name="asset_geo_files_sources">Источник геофайлов (необязательно)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">Загрузка…</string>
     <string name="menu_item_search">Поиск</string>
     <string name="menu_item_select_all">Выбрать все</string>
@@ -154,7 +154,7 @@
     <string name="per_app_proxy_settings_enable">Использовать выбор приложений</string>
     <string name="app_picker_unknown_app">Неизвестное приложение (неопознанный UID)</string>
 
-    <!-- Preferences -->
+    
     <string name="title_settings">Настройки</string>
     <string name="title_advanced">Расширенные настройки</string>
     <string name="title_core_settings">Настройки ядра</string>
@@ -260,7 +260,7 @@
     <string name="title_pref_group_all_display">Общая вкладка групп</string>
     <string name="summary_pref_group_all_display">Показывать дополнительную вкладку со всеми профилями групп</string>
 
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">Обратная связь</string>
     <string name="summary_pref_feedback">Предложить улучшение или сообщить об ошибке на GitHub</string>
     <string name="summary_pref_tg_group">Присоединиться к группе в Telegram</string>
@@ -332,7 +332,7 @@
     <string name="tasker_start_service">Запуск службы</string>
     <string name="tasker_setting_confirm">Подтвердить</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">Доменная стратегия</string>
     <string name="routing_settings_title">Маршрутизация</string>
     <string name="routing_settings_tips">Через запятую (,)\nЧто-то одно: домен, IP или процесс</string>
@@ -393,7 +393,7 @@
     <string name="server_proxy_chain_members_insufficient">Недостаточно участников</string>
     <string name="server_proxy_chain_members_invalid">Недопустимые участники цепочки: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">Резервное копирование</string>
     <string name="title_configuration_backup">Резервирование конфигурации</string>
     <string name="title_configuration_restore">Восстановление конфигурации</string>

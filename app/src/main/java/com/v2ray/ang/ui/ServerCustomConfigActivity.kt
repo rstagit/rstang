@@ -33,7 +33,7 @@ class ServerCustomConfigActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(binding.root)
+        
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = EConfigType.CUSTOM.toString())
 
         if (!Utils.getDarkModeStatus(this)) {
@@ -48,9 +48,7 @@ class ServerCustomConfigActivity : BaseActivity() {
         }
     }
 
-    /**
-     * Binding selected server config
-     */
+    
     private fun bindingServer(config: ProfileItem): Boolean {
         binding.etRemarks.text = Utils.getEditable(config.remarks)
         val raw = MmkvManager.decodeServerRaw(editGuid)
@@ -60,17 +58,13 @@ class ServerCustomConfigActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * clear or init server config
-     */
+    
     private fun clearServer(): Boolean {
         binding.etRemarks.text = null
         return true
     }
 
-    /**
-     * save server config
-     */
+    
     private fun saveServer(): Boolean {
         if (TextUtils.isEmpty(binding.etRemarks.text.toString())) {
             toast(R.string.server_lab_remarks)
@@ -103,9 +97,7 @@ class ServerCustomConfigActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * save server config
-     */
+    
     private fun deleteServer(): Boolean {
         if (editGuid.isNotEmpty()) {
             AlertDialog.Builder(this).setMessage(R.string.del_config_comfirm)
@@ -114,7 +106,7 @@ class ServerCustomConfigActivity : BaseActivity() {
                     finish()
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    // do nothing
+                    
                 }
                 .show()
         }

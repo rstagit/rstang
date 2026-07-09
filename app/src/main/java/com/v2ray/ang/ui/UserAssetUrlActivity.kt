@@ -17,7 +17,7 @@ import com.v2ray.ang.util.Utils
 import java.io.File
 
 class UserAssetUrlActivity : BaseActivity() {
-    // Receive QRcode URL from UserAssetActivity
+    
     companion object {
         const val ASSET_URL_QRCODE = "ASSET_URL_QRCODE"
     }
@@ -32,7 +32,7 @@ class UserAssetUrlActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(binding.root)
+        
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = getString(R.string.title_user_asset_add_url))
 
         val assetItem = MmkvManager.decodeAsset(editAssetId)
@@ -49,32 +49,26 @@ class UserAssetUrlActivity : BaseActivity() {
         }
     }
 
-    /**
-     * bingding seleced asset config
-     */
+    
     private fun bindingAsset(assetItem: AssetUrlItem): Boolean {
         binding.etRemarks.text = Utils.getEditable(assetItem.remarks)
         binding.etUrl.text = Utils.getEditable(assetItem.url)
         return true
     }
 
-    /**
-     * clear or init asset config
-     */
+    
     private fun clearAsset(): Boolean {
         binding.etRemarks.text = null
         binding.etUrl.text = null
         return true
     }
 
-    /**
-     * save asset config
-     */
+    
     private fun saveServer(): Boolean {
         var assetItem = MmkvManager.decodeAsset(editAssetId)
         var assetId = editAssetId
         if (assetItem != null) {
-            // remove file associated with the asset
+            
             val file = extDir.resolve(assetItem.remarks)
             if (file.exists()) {
                 try {
@@ -91,7 +85,7 @@ class UserAssetUrlActivity : BaseActivity() {
         assetItem.remarks = binding.etRemarks.text.toString()
         assetItem.url = binding.etUrl.text.toString()
 
-        // check remarks unique
+        
         val assetList = MmkvManager.decodeAssetUrls()
         if (assetList.any { it.assetUrl.remarks == assetItem.remarks && it.guid != assetId }) {
             toast(R.string.msg_remark_is_duplicate)
@@ -114,9 +108,7 @@ class UserAssetUrlActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * save server config
-     */
+    
     private fun deleteServer(): Boolean {
         if (editAssetId.isNotEmpty()) {
             AlertDialog.Builder(this).setMessage(R.string.del_config_comfirm)
@@ -125,7 +117,7 @@ class UserAssetUrlActivity : BaseActivity() {
                     finish()
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    // do nothing
+                    
                 }
                 .show()
         }

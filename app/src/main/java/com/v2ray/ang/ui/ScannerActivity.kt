@@ -35,9 +35,9 @@ class ScannerActivity : HelperBaseActivity() {
     private fun launchScan() {
         scanQrCode.launch(
             ScannerConfig.build {
-                setHapticSuccessFeedback(true) // enable (default) or disable haptic feedback when a barcode was detected
-                setShowTorchToggle(true) // show or hide (default) torch/flashlight toggle button
-                setShowCloseButton(true) // show or hide (default) close button
+                setHapticSuccessFeedback(true) 
+                setShowTorchToggle(true) 
+                setShowCloseButton(true) 
                 setBarcodeFormats(listOf(BarcodeFormat.QR_CODE))
             }
         )

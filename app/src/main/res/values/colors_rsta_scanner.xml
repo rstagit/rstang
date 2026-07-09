@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rsta_scanner_btn_scan">#FF1976D2</color>
+    <color name="rsta_scanner_btn_stop">#FFF44336</color>
+    <color name="rsta_scanner_btn_neutral">#FF37474F</color>
+    <color name="rsta_scanner_btn_select_all">#FF2E7D32</color>
+    <color name="rsta_scanner_btn_deselect_all">#FFB71C1C</color>
+    <color name="rsta_scanner_btn_top10">#FF1A237E</color>
+    <color name="rsta_scanner_btn_add_rstang">#FF2E7D32</color>
+    <color name="rsta_scanner_btn_speed_test">#FF00695C</color>
+    <color name="rsta_scanner_btn_speed_stop">#FFB71C1C</color>
+    <color name="rsta_scanner_btn_copy_results">#FF4527A0</color>
+    <color name="rsta_scanner_btn_copy_ips">#FF00838F</color>
+    <color name="rsta_scanner_btn_copy_ip_item">#FF1565C0</color>
+    <color name="rsta_scanner_btn_copy_config_item">#FF2E7D32</color>
+    <color name="rsta_scanner_checkbox_tint">#FF1976D2</color>
+    <color name="rsta_scanner_telegram_text">#FFF44336</color>
+    <color name="rsta_scanner_found_count">#FF4CAF50</color>
+    <color name="rsta_scanner_speed_progress_text">#FF29B6F6</color>
+    <color name="rsta_scanner_header_bg">#FF1A1A1A</color>
+
+    
+    <color name="rsta_scanner_delay_good">#FF4CAF50</color>
+    <color name="rsta_scanner_delay_medium">#FFFFC107</color>
+    <color name="rsta_scanner_delay_bad">#FFF44336</color>
+    
+    <color name="rsta_scanner_speed_badge">#FFE65100</color>
+</resources>

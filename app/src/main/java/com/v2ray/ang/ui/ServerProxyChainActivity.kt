@@ -145,7 +145,7 @@ class ServerProxyChainActivity : BaseActivity() {
                             finish()
                         }
                         .setNegativeButton(android.R.string.cancel) { _, _ ->
-                            // do nothing
+                            
                         }
                         .show()
                 } else {
@@ -176,7 +176,7 @@ class ServerProxyChainActivity : BaseActivity() {
 
     private inner class ActivityAdapterListener : BaseAdapterListener {
         override fun onEdit(guid: String, position: Int) {
-            // Row selection is handled directly by AutoCompleteTextView in the adapter.
+            
         }
 
         override fun onRemove(guid: String, position: Int) {

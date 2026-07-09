@@ -3,16 +3,7 @@ package com.v2ray.ang.rsta
 import com.v2ray.ang.AppConfig
 import com.v2ray.ang.handler.MmkvManager
 
-/**
- * Settings + defaults for the RSTA Spoof local SNI-spoof proxy.
- *
- * These defaults intentionally mirror `defaultConfig` in rstaspoofV5.0.0.go
- * (CONNECT_IP, CONNECT_PORT, FAKE_SNI, BYPASS_METHOD), since the bundled
- * native engine (libsnispf.so) was built from that same Go source and bakes
- * in the rest of that file's defaults internally (fragment strategy, TTL
- * trick, fake-SNI method, etc. are not exposed by the native API, only
- * listen port / remote endpoint / fake SNI / method are).
- */
+
 object RstaSpoofConfig {
 
     const val LISTEN_HOST = AppConfig.LOOPBACK
@@ -23,7 +14,7 @@ object RstaSpoofConfig {
     const val DEFAULT_FAKE_SNI = "cdnjs.cloudflare.com"
     const val DEFAULT_METHOD = "combined"
 
-    /** Bypass methods supported by the native engine's `method` parameter. */
+    
     val METHODS = listOf(
         "combined",
         "fragment",
@@ -53,10 +44,7 @@ object RstaSpoofConfig {
         MmkvManager.decodeSettingsString(AppConfig.PREF_RSTA_SPOOF_METHOD, DEFAULT_METHOD)
             ?.trim().orEmpty().ifBlank { DEFAULT_METHOD }
 
-    /**
-     * True if a server profile with this address/port relies on the local
-     * RSTA Spoof proxy (i.e. its outbound points at 127.0.0.1:40443).
-     */
+    
     fun isSpoofTarget(server: String?, serverPort: String?): Boolean {
         val s = server?.trim() ?: return false
         if (s != LISTEN_HOST && s.lowercase() != "localhost") return false

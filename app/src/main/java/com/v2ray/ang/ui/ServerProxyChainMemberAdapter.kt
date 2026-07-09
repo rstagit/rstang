@@ -117,7 +117,7 @@ class ServerProxyChainMemberAdapter(
     }
 
     override fun onItemDismiss(position: Int) {
-        // Swipe-to-dismiss disabled for this adapter.
+        
     }
 
     class MemberViewHolder(val binding: ItemRecyclerProxyChainMemberBinding) :

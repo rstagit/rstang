@@ -9,10 +9,7 @@ import com.v2ray.ang.enums.NotificationChannelType
 import com.v2ray.ang.rsta.RstaSpoofEngine
 import com.v2ray.ang.util.NotificationHelper
 
-/**
- * Dedicated service to run the RSTA Spoof engine in a separate process.
- * This prevents Go runtime conflicts with the main Xray process.
- */
+
 class RstaSpoofService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val action = intent?.action

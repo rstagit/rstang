@@ -33,7 +33,7 @@ class ServerGroupActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(binding.root)
+        
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = EConfigType.POLICYGROUP.toString())
 
         val config = MmkvManager.decodeServerConfig(editGuid)
@@ -46,9 +46,7 @@ class ServerGroupActivity : BaseActivity() {
         }
     }
 
-    /**
-     * Binding selected server config
-     */
+    
     private fun bindingServer(config: ProfileItem): Boolean {
         binding.etRemarks.text = Utils.getEditable(config.remarks)
         binding.etPolicyGroupFilter.text = Utils.getEditable(config.policyGroupFilter)
@@ -62,9 +60,7 @@ class ServerGroupActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * clear or init server config
-     */
+    
     private fun clearServer(): Boolean {
         binding.etRemarks.text = null
         binding.etPolicyGroupFilter.text = null
@@ -76,9 +72,7 @@ class ServerGroupActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * save server config
-     */
+    
     private fun saveServer(): Boolean {
         if (TextUtils.isEmpty(binding.etRemarks.text.toString())) {
             toast(R.string.server_lab_remarks)
@@ -109,9 +103,7 @@ class ServerGroupActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * save server config
-     */
+    
     private fun deleteServer(): Boolean {
         if (editGuid.isNotEmpty()) {
             AlertDialog.Builder(this).setMessage(R.string.del_config_comfirm)
@@ -120,7 +112,7 @@ class ServerGroupActivity : BaseActivity() {
                     finish()
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    // do nothing
+                    
                 }
                 .show()
         }
@@ -129,9 +121,9 @@ class ServerGroupActivity : BaseActivity() {
 
     private fun populateSubscriptionSpinner() {
         val subs = MmkvManager.decodeSubscriptions()
-        val displayList = mutableListOf(getString(R.string.filter_config_all)) //none
+        val displayList = mutableListOf(getString(R.string.filter_config_all)) 
         subIds.clear()
-        subIds.add("") // index 0 => All
+        subIds.add("") 
         subs.forEach { sub ->
             val name = when {
                 sub.subscription.remarks.isNotBlank() -> sub.subscription.remarks

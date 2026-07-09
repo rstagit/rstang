@@ -10,7 +10,7 @@
     <string name="migration_fail">ডেটা স্থানান্তর ব্যর্থ!</string>
     <string name="pull_down_to_refresh">Please pull down to refresh!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">বন্ধ করুন</string>
     <string name="toast_permission_denied">অনুমতি পাওয়া যাচ্ছে না</string>
     <string name="toast_permission_denied_notification">Unable to obtain the notification permission</string>
@@ -20,7 +20,7 @@
     <string name="toast_services_success">সার্ভিস সফলভাবে শুরু হয়েছে</string>
     <string name="toast_services_failure">সার্ভিস শুরু হতে ব্যর্থ হয়েছে</string>
 
-    <!--ServerActivity-->
+    
     <string name="title_server">কনফিগারেশন ফাইল</string>
     <string name="menu_item_add_config">কনফিগারেশন যোগ করুন</string>
     <string name="menu_item_save_config">কনফিগারেশন সংরক্ষণ করুন</string>
@@ -123,7 +123,7 @@
     <string name="toast_fetch_cert_sha256_success">Certificate fingerprint fetched successfully</string>
     <string name="toast_fetch_cert_sha256_failed">Failed to fetch certificate fingerprint</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">ফাইল কপি ব্যর্থ, অনুগ্রহ করে ফাইল ম্যানেজার ব্যবহার করুন</string>
     <string name="menu_item_add_asset">অ্যাসেট যোগ করুন</string>
     <string name="menu_item_add_file">ফাইল যোগ করুন</string>
@@ -136,7 +136,7 @@
     <string name="msg_remark_is_duplicate">মন্তব্য ইতিমধ্যে বিদ্যমান</string>
     <string name="asset_geo_files_sources">Geo files source (optional)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">লোড হচ্ছে</string>
     <string name="menu_item_search">অনুসন্ধান করুন</string>
     <string name="menu_item_select_all">সবকিছু নির্বাচন করুন</string>
@@ -150,7 +150,7 @@
     <string name="per_app_proxy_settings">Per-app settings</string>
     <string name="per_app_proxy_settings_enable">Enable per-app</string>
 
-    <!-- Preferences -->
+    
     <string name="title_settings">সেটিংস</string>
     <string name="title_advanced">এডভান্সড সেটিংস</string>
     <string name="title_core_settings">কোর সেটিংস</string>
@@ -254,7 +254,7 @@
 
     <string name="title_pref_group_all_display">Enable show all groups</string>
     <string name="summary_pref_group_all_display">Add an extra "All Tabs" page</string>
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">মতামত</string>
     <string name="summary_pref_feedback">মতামত উন্নয়ন বা বাগগুলি GitHub-এ পাঠান</string>
     <string name="summary_pref_tg_group">টেলিগ্রাম গ্রুপে যোগদান করুন</string>
@@ -326,7 +326,7 @@
     <string name="tasker_start_service">সার্ভিস শুরু করুন</string>
     <string name="tasker_setting_confirm">নিশ্চিত করুন</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">ডোমেইন কৌশল</string>
     <string name="routing_settings_title">রাউটিং সেটিংস</string>
     <string name="routing_settings_tips">কমা (,) দিয়ে আলাদা করুন। domain, ip বা process-এ একটি নির্বাচন করুন</string>
@@ -386,7 +386,7 @@
     <string name="server_proxy_chain_members_insufficient">Insufficient members</string>
     <string name="server_proxy_chain_members_invalid">Invalid chain members: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">Backup &amp; Restore</string>
     <string name="title_configuration_backup">কনফিগারেশন ব্যাকআপ</string>
     <string name="title_configuration_restore">কনফিগারেশন পুনরুদ্ধার</string>

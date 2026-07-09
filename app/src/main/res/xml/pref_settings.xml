@@ -57,10 +57,10 @@
             android:summary="@string/summary_pref_prefer_ipv6"
             android:title="@string/title_pref_prefer_ipv6" />
 
-<!--        <CheckBoxPreference-->
-<!--            android:key="pref_per_app_proxy"-->
-<!--            android:summary="@string/summary_pref_per_app_proxy"-->
-<!--            android:title="@string/title_pref_per_app_proxy" />-->
+
+
+
+
 
         <CheckBoxPreference
             android:key="pref_local_dns_enabled"
@@ -77,11 +77,11 @@
             android:summary="@string/summary_pref_append_http_proxy"
             android:title="@string/title_pref_append_http_proxy" />
 
-<!--        <EditTextPreference-->
-<!--            android:inputType="number"-->
-<!--            android:key="pref_local_dns_port"-->
-<!--            android:summary="10853"-->
-<!--            android:title="@string/title_pref_local_dns_port" />-->
+
+
+
+
+
 
         <EditTextPreference
             android:key="pref_vpn_dns"

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_rsta_scanner_result_item"
+    android:layout_marginBottom="8dp"
+    android:padding="12dp">
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_ip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0.0.0.0"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textDirection="ltr"
+            android:fontFamily="monospace"
+            android:singleLine="true"
+            android:ellipsize="end" />
+
+        
+        <TextView
+            android:id="@+id/tv_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↓ 0 KB/s ↑ 0 KB/s"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textDirection="ltr"
+            android:fontFamily="monospace"
+            android:paddingHorizontal="7dp"
+            android:paddingVertical="3dp"
+            android:background="@color/rsta_scanner_speed_badge"
+            android:layout_marginStart="6dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_delay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--- ms"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:background="@color/rsta_scanner_delay_good"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_copy_ip"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="@string/rsta_scanner_btn_copy_ip"
+            android:textSize="12sp"
+            android:backgroundTint="@color/rsta_scanner_btn_copy_ip_item"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btn_copy_config"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="@string/rsta_scanner_btn_copy_config"
+            android:textSize="12sp"
+            android:backgroundTint="@color/rsta_scanner_btn_copy_config_item" />
+    </LinearLayout>
+</LinearLayout>

@@ -38,6 +38,11 @@ jobs:
           echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> signing.properties
           echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> signing.properties
 
+      - name: Download libv2ray.aar
+        run: |
+          mkdir -p app/libs
+          curl -L "https://github.com/2dust/AndroidLibXrayLite/releases/download/v26.7.5/libv2ray.aar" -o app/libs/libv2ray.aar
+
       - name: Build with Gradle
         run: ./gradlew assembleFdroidRelease
 

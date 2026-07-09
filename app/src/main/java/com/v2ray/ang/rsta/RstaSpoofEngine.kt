@@ -11,13 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.ArrayDeque
 
-/**
- * App-facing control surface for the RSTA Spoof local SNI-spoof proxy.
- *
- * Process Awareness: This object can be called from any process. However,
- * the actual native engine should only be started/stopped from a dedicated
- * Service process (RstaProcess) to avoid Go runtime conflicts.
- */
+
 object RstaSpoofEngine {
 
     private const val LOG_BUFFER_MAX_LINES = 200
@@ -39,14 +33,14 @@ object RstaSpoofEngine {
     val isRunning: Boolean
         get() = MmkvManager.decodeSettingsLong(MMKV_SESSION_ID, 0L) != 0L
 
-    /** True if the native engine is present for this device's ABI. */
+    
     fun isAvailable(): Boolean = try {
         GoNativeBridge.isAvailable()
     } catch (_: Throwable) {
         false
     }
 
-    /** Human-readable status string for the settings screen. */
+    
     fun statusSummary(): String {
         if (isRunning) {
             val ip = MmkvManager.decodeSettingsString(MMKV_LAST_IP, "")
@@ -60,10 +54,7 @@ object RstaSpoofEngine {
         }
     }
 
-    /**
-     * Starts the proxy if it isn't already running. Safe to call repeatedly.
-     * NOTE: This should only be called from the :RstaProcess.
-     */
+    
     @Synchronized
     fun start(connectIp: String, connectPort: Int, fakeSni: String, method: String): Boolean {
         val currentIp = MmkvManager.decodeSettingsString(MMKV_LAST_IP, "")
@@ -72,12 +63,12 @@ object RstaSpoofEngine {
         val currentMethod = MmkvManager.decodeSettingsString(MMKV_LAST_METHOD, "")
 
         if (localSessionId != 0L) {
-            // If parameters are the same, just keep running
+            
             if (currentIp == connectIp && currentPort == connectPort && 
                 currentSni == fakeSni && currentMethod == method) {
                 return true
             }
-            // Parameters changed, restart
+            
             stop()
         }
 
@@ -142,7 +133,7 @@ object RstaSpoofEngine {
         "unknown"
     }
 
-    /** Snapshot of recent log lines, oldest first. */
+    
     fun recentLogLines(): List<String> = synchronized(logLock) { logBuffer.toList() }
 
     private fun appendLog(line: String) {
@@ -164,7 +155,7 @@ object RstaSpoofEngine {
                         appendLog(line)
                     }
                 } catch (_: Throwable) {
-                    // ignore single poll failures, keep looping
+                    
                 }
                 delay(500)
             }

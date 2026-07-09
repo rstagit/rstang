@@ -79,19 +79,19 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         itemTouchHelper?.attachToRecyclerView(binding.recyclerView)
 
         binding.refreshLayout.isEnabled = false
-//        binding.refreshLayout.setOnRefreshListener(this)
-//        // Set the distance to trigger sync to 160dp
-//        binding.refreshLayout.setDistanceToTriggerSync((160 * resources.displayMetrics.density).toInt())
+
+
+
 
         mainViewModel.updateListAction.observe(viewLifecycleOwner) { index ->
             if (mainViewModel.subscriptionId != subId) {
                 return@observe
             }
-            // LogUtil.d(TAG, "GroupServerFragment updateListAction subId=$subId")
+            
             adapter.setData(mainViewModel.serversCache, index)
         }
 
-        // LogUtil.d(TAG, "GroupServerFragment onViewCreated: subId=$subId")
+        
     }
 
     override fun onResume() {
@@ -99,15 +99,7 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         mainViewModel.subscriptionIdChanged(subId)
     }
 
-    /**
-     * Shares server configuration
-     * Displays a dialog with sharing options and executes the selected action
-     * @param guid The server unique identifier
-     * @param profile The server configuration
-     * @param position The position in the list
-     * @param shareOptions The list of share options
-     * @param skip The number of options to skip
-     */
+    
     private fun shareServer(guid: String, profile: ProfileItem, position: Int, shareOptions: List<String>, skip: Int) {
         AlertDialog.Builder(ownerActivity).setItems(shareOptions.toTypedArray()) { _, i ->
             try {
@@ -125,10 +117,7 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         }.show()
     }
 
-    /**
-     * Displays QR code for the server configuration
-     * @param guid The server unique identifier
-     */
+    
     private fun showQRCode(guid: String) {
         val ivBinding = ItemQrcodeBinding.inflate(LayoutInflater.from(ownerActivity))
         ivBinding.ivQcode.setImageBitmap(AngConfigManager.share2QRCode(guid))
@@ -140,10 +129,7 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         AlertDialog.Builder(ownerActivity).setView(ivBinding.root).show()
     }
 
-    /**
-     * Shares server configuration to clipboard
-     * @param guid The server unique identifier
-     */
+    
     private fun share2Clipboard(guid: String) {
         if (AngConfigManager.share2Clipboard(ownerActivity, guid) == 0) {
             ownerActivity.toastSuccess(R.string.toast_success)
@@ -152,10 +138,7 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         }
     }
 
-    /**
-     * Shares full server configuration content to clipboard
-     * @param guid The server unique identifier
-     */
+    
     private fun shareFullContent(guid: String) {
         lifecycleScope.launch(Dispatchers.IO) {
             val result = AngConfigManager.shareFullContent2Clipboard(ownerActivity, guid)
@@ -169,12 +152,7 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         }
     }
 
-    /**
-     * Edits server configuration
-     * Opens appropriate editing interface based on configuration type
-     * @param guid The server unique identifier
-     * @param profile The server configuration
-     */
+    
     private fun editServer(guid: String, profile: ProfileItem) {
         val activityClass = when (profile.configType) {
             EConfigType.CUSTOM -> ServerCustomConfigActivity::class.java
@@ -192,12 +170,7 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         launcher.launch(intent)
     }
 
-    /**
-     * Removes server configuration
-     * Handles confirmation dialog and related checks
-     * @param guid The server unique identifier
-     * @param position The position in the list
-     */
+    
     private fun removeServer(guid: String, position: Int) {
         if (guid == MmkvManager.getSelectServer()) {
             ownerActivity.toast(R.string.toast_action_not_allowed)
@@ -210,7 +183,7 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
                     removeServerSub(guid, position)
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    //do noting
+                    
                 }
                 .show()
         } else {
@@ -218,22 +191,14 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
         }
     }
 
-    /**
-     * Executes the actual server removal process
-     * @param guid The server unique identifier
-     * @param position The position in the list
-     */
+    
     private fun removeServerSub(guid: String, position: Int) {
         mainViewModel.removeServer(guid)
         adapter.removeServerSub(guid, position)
         ownerActivity.refreshGroupTabTitles()
     }
 
-    /**
-     * Sets the selected server
-     * Updates UI and restarts service if needed
-     * @param guid The server unique identifier to select
-     */
+    
     private fun setSelectServer(guid: String) {
         val selected = MmkvManager.getSelectServer()
         if (guid != selected) {
@@ -287,12 +252,10 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
 
     override fun onRefresh() {
         ownerActivity.importConfigViaSub()
-        //binding.refreshLayout.isRefreshing = false
+        
     }
 
-    /**
-     * Scrolls to the currently selected server in the RecyclerView
-     */
+    
     fun scrollToSelectedServer() {
         val selectedGuid = MmkvManager.getSelectServer()
         if (selectedGuid.isNullOrEmpty()) {
@@ -300,23 +263,23 @@ class GroupServerFragment : BaseFragment<FragmentGroupServerBinding>(),
             return
         }
 
-        // Find the position of the selected server
+        
         val serversCache = mainViewModel.serversCache
         val position = serversCache.indexOfFirst { it.guid == selectedGuid }
         val recyclerView = binding.recyclerView
 
         if (position >= 0) {
-            // Get the layout manager
+            
             val layoutManager = recyclerView.layoutManager as? GridLayoutManager
 
             if (layoutManager != null) {
-                // Scroll to position with offset to center it on screen
-                // First scroll to position, then adjust to center
+                
+                
                 recyclerView.post {
                     layoutManager.scrollToPositionWithOffset(position, recyclerView.height / 3)
                 }
             } else {
-                // Fallback to smooth scroll if layout manager is not GridLayoutManager
+                
                 recyclerView.smoothScrollToPosition(position)
             }
         } else {

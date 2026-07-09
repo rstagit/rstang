@@ -43,7 +43,7 @@ class RoutingSettingActivity : HelperBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(binding.root)
+        
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = getString(R.string.routing_settings_title))
 
         adapter = RoutingSettingRecyclerAdapter(viewModel, ActivityAdapterListener())
@@ -114,7 +114,7 @@ class RoutingSettingActivity : HelperBaseActivity() {
                     }
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    //do nothing
+                    
                 }
                 .show()
         }.show()
@@ -143,7 +143,7 @@ class RoutingSettingActivity : HelperBaseActivity() {
                 }
             }
             .setNegativeButton(android.R.string.cancel) { _, _ ->
-                //do nothing
+                
             }
             .show()
     }
@@ -184,7 +184,7 @@ class RoutingSettingActivity : HelperBaseActivity() {
                 }
             }
             .setNegativeButton(android.R.string.cancel) { _, _ ->
-                //do nothing
+                
             }
             .show()
         return true

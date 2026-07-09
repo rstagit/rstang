@@ -15,13 +15,10 @@ import com.v2ray.ang.util.JsonUtil
 import com.v2ray.ang.util.LogUtil
 import com.v2ray.ang.util.Utils
 
-/**
- * Centralizes ProfileItem -> OutboundBean conversion.
- * Most protocol builders mirror the previous *Fmt.toOutbound behavior.
- */
+
 object CoreOutboundBuilder {
 
-    /** Dispatches a profile to protocol-specific outbound builder. */
+    
     fun convert(profileItem: ProfileItem): OutboundBean? {
         val outbound = when (profileItem.configType) {
             EConfigType.VMESS -> toOutboundVmess(profileItem)
@@ -41,7 +38,7 @@ object CoreOutboundBuilder {
         return outbound
     }
 
-    /** Applies global outbound options (mux, protocol-specific tweaks, etc.). */
+    
     private fun updateOutboundWithGlobalSettings(outbound: OutboundBean): Boolean {
         try {
             var muxEnabled = MmkvManager.decodeSettingsBool(AppConfig.PREF_MUX_ENABLED, false)
@@ -79,7 +76,7 @@ object CoreOutboundBuilder {
         return true
     }
 
-    /** Creates an initial outbound template for a protocol type. */
+    
     fun createInitOutbound(configType: EConfigType): OutboundBean? {
         return when (configType) {
             EConfigType.VMESS,
@@ -131,7 +128,7 @@ object CoreOutboundBuilder {
         }
     }
 
-    // ── Per-protocol builders — implementations are identical to each *Fmt.toOutbound ──
+    
 
     private fun toOutboundVmess(profileItem: ProfileItem): OutboundBean? {
         val outboundBean = createInitOutbound(EConfigType.VMESS)
@@ -323,23 +320,15 @@ object CoreOutboundBuilder {
         return request
     }
 
-    /**
-     * Configures transport settings for an outbound connection.
-     *
-     * Sets up protocol-specific transport options based on the profile settings.
-     *
-     * @param streamSettings The stream settings to configure
-     * @param profileItem The profile containing transport configuration
-     * @return The Server Name Indication (SNI) value to use, or null if not applicable
-     */
+    
     fun populateTransportSettings(streamSettings: OutboundBean.StreamSettingsBean, profileItem: ProfileItem): String? {
         val transport = profileItem.network.orEmpty()
         val headerType = profileItem.headerType
         val host = profileItem.host
         val path = profileItem.path
         val seed = profileItem.seed
-//        val quicSecurity = profileItem.quicSecurity
-//        val key = profileItem.quicKey
+
+
         val mode = profileItem.mode
         val serviceName = profileItem.serviceName
         val authority = profileItem.authority
@@ -446,13 +435,13 @@ object CoreOutboundBuilder {
                 streamSettings.httpSettings = h2Setting
             }
 
-//                    "quic" -> {
-//                        val quicsetting = QuicSettingBean()
-//                        quicsetting.security = quicSecurity ?: "none"
-//                        quicsetting.key = key.orEmpty()
-//                        quicsetting.header.type = headerType ?: "none"
-//                        quicSettings = quicsetting
-//                    }
+
+
+
+
+
+
+
 
             NetworkType.GRPC.type -> {
                 val grpcSetting = OutboundBean.StreamSettingsBean.GrpcSettingsBean()
@@ -537,15 +526,7 @@ object CoreOutboundBuilder {
         return sni
     }
 
-    /**
-     * Configures TLS or REALITY security settings for an outbound connection.
-     *
-     * Sets up security-related parameters like certificates, fingerprints, and SNI.
-     *
-     * @param streamSettings The stream settings to configure
-     * @param profileItem The profile containing security configuration
-     * @param sniExt An external SNI value to use if the profile doesn't specify one
-     */
+    
     fun populateTlsSettings(streamSettings: OutboundBean.StreamSettingsBean, profileItem: ProfileItem, sniExt: String?) {
         val streamSecurity = profileItem.security.orEmpty()
         val allowInsecure = profileItem.insecure == true && profileItem.pinnedCA256.isNullOrEmpty()
@@ -587,14 +568,7 @@ object CoreOutboundBuilder {
         }
     }
 
-    /**
-     * Updates the outbound with fragment settings for traffic optimization.
-     *
-     * Configures packet fragmentation for TLS and REALITY protocols if enabled.
-     *
-     * @param streamSettings The streamSettings object to be modified
-     * @return true if fragment configuration was successful, false otherwise
-     */
+    
     private fun updateOutboundFragment(streamSettings: OutboundBean.StreamSettingsBean): Boolean {
         try {
             if (MmkvManager.decodeSettingsBool(AppConfig.PREF_FRAGMENT_ENABLED, false) == false) {
@@ -643,7 +617,7 @@ object CoreOutboundBuilder {
                 JsonUtil.parseString(JsonUtil.toJson(existingFinalMask))
             } ?: JsonObject()
 
-            // finalmask.tcp / finalmask.udp are arrays; prepend mask at index 0.
+            
             fun prependMask(scope: String, mask: OutboundBean.StreamSettingsBean.FinalMaskBean.MaskBean) {
                 val current = finalMaskObj.get(scope)
                 if (current != null && current.isJsonArray && current.asJsonArray.size() > 0) {
@@ -678,7 +652,7 @@ object CoreOutboundBuilder {
         if (MmkvManager.decodeSettingsString(AppConfig.PREF_OUTBOUND_DOMAIN_RESOLVE_METHOD, "1") != "2") {
             return domain
         }
-        //Resolve and replace domain
+        
         val resolvedIps = HttpUtil.resolveHostToIP(domain, MmkvManager.decodeSettingsBool(AppConfig.PREF_PREFER_IPV6))
         if (resolvedIps.isNullOrEmpty()) {
             return domain

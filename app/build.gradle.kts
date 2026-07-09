@@ -14,8 +14,8 @@ android {
         applicationId = "com.rstagit.rstang"
         minSdk = 24
         targetSdk = 37
-        versionCode = 734
-        versionName = "2.2.4"
+        versionCode = 736
+        versionName = "2.2.6"
         multiDexEnabled = true
 
         val abiFilterList = (properties["ABI_FILTERS"] as? String)?.split(';')
@@ -160,6 +160,7 @@ dependencies {
     // AndroidX Core Libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.localbroadcastmanager)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.preference.ktx)

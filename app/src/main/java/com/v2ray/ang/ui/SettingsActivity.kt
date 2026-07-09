@@ -25,7 +25,7 @@ class SettingsActivity : BaseActivity() {
         private val fakeDns by lazy { findPreference<CheckBoxPreference>(AppConfig.PREF_FAKE_DNS_ENABLED) }
         private val appendHttpProxy by lazy { findPreference<CheckBoxPreference>(AppConfig.PREF_APPEND_HTTP_PROXY) }
 
-        //        private val localDnsPort by lazy { findPreference<EditTextPreference>(AppConfig.PREF_LOCAL_DNS_PORT) }
+        
         private val vpnDns by lazy { findPreference<EditTextPreference>(AppConfig.PREF_VPN_DNS) }
         private val vpnBypassLan by lazy { findPreference<ListPreference>(AppConfig.PREF_VPN_BYPASS_LAN) }
         private val vpnInterfaceAddress by lazy { findPreference<ListPreference>(AppConfig.PREF_VPN_INTERFACE_ADDRESS_CONFIG_INDEX) }
@@ -57,8 +57,8 @@ class SettingsActivity : BaseActivity() {
         private val proxySharing by lazy { findPreference<CheckBoxPreference>(AppConfig.PREF_PROXY_SHARING) }
 
         override fun onCreatePreferences(bundle: Bundle?, s: String?) {
-            // Use MMKV as the storage backend for all Preferences
-            // This prevents inconsistencies between SharedPreferences and MMKV
+            
+            
             preferenceManager.preferenceDataStore = MmkvPreferenceDataStore()
 
             addPreferencesFromResource(R.xml.pref_settings)
@@ -170,20 +170,20 @@ class SettingsActivity : BaseActivity() {
             super.onStart()
             updateHevTunSettings(MmkvManager.decodeSettingsBool(AppConfig.PREF_USE_HEV_TUNNEL, true))
 
-            // Initialize mode-dependent UI states
+            
             updateMode(MmkvManager.decodeSettingsString(AppConfig.PREF_MODE, VPN))
 
-            // Initialize local proxy state
+            
             updateEnableLocalProxy(MmkvManager.decodeSettingsBool(AppConfig.PREF_ENABLE_LOCAL_PROXY, true))
 
-            // Initialize mux-dependent UI states
+            
             updateMux(MmkvManager.decodeSettingsBool(AppConfig.PREF_MUX_ENABLED, false))
 
-            // Initialize fragment-dependent UI states
+            
             updateFragment(MmkvManager.decodeSettingsBool(AppConfig.PREF_FRAGMENT_ENABLED, false))
 
-            // RSTA NG: initialize Auto Setting UI state (and apply its forced
-            // values if it's enabled, in case this is the very first run).
+            
+            
             updateFragmentAutoSetting(MmkvManager.decodeSettingsBool(AppConfig.PREF_FRAGMENT_AUTO_SETTING, true))
 
             updateDynamicSocksPort(MmkvManager.decodeSettingsBool(AppConfig.PREF_DYNAMIC_SOCKS_PORT, false))
@@ -194,7 +194,7 @@ class SettingsActivity : BaseActivity() {
             localDns?.isEnabled = vpn
             fakeDns?.isEnabled = vpn
             appendHttpProxy?.isEnabled = vpn
-//            localDnsPort?.isEnabled = vpn
+
             vpnDns?.isEnabled = vpn
             vpnBypassLan?.isEnabled = vpn
             vpnInterfaceAddress?.isEnabled = vpn
@@ -219,7 +219,7 @@ class SettingsActivity : BaseActivity() {
 
         private fun updateLocalDns(enabled: Boolean) {
             fakeDns?.isEnabled = enabled
-//            localDnsPort?.isEnabled = enabled
+
             vpnDns?.isEnabled = !enabled
         }
 
@@ -255,19 +255,7 @@ class SettingsActivity : BaseActivity() {
             fragmentInterval?.isEnabled = enabled
         }
 
-        /**
-         * RSTA NG: "Auto Setting" collapses the manual Fragment Length/Interval/
-         * Packets fields away and silently forces the recommended values
-         * (length=1, interval=0, packets=tlshello), while also turning the
-         * master Fragment toggle on. This matches the values used together
-         * with the RSTA Spoof engine's own baked-in defaults (the native
-         * engine, built from rstaspoofV5.0.0.go, applies its remaining
-         * defaults - fragment strategy / TTL trick / fake-SNI method -
-         * internally; see RstaSpoofConfig/RstaSpoofEngine).
-         *
-         * Turning Auto Setting off restores manual control over the three
-         * fields, for advanced users who want to fine-tune Fragment by hand.
-         */
+        
         private fun updateFragmentAutoSetting(enabled: Boolean) {
             fragmentLength?.isVisible = !enabled
             fragmentInterval?.isVisible = !enabled

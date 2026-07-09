@@ -9,7 +9,7 @@ enum class NetworkType(val type: String) {
     HTTP("http"),
     H2("h2"),
 
-    //QUIC("quic"),
+    
     GRPC("grpc"),
     HYSTERIA("hysteria");
 

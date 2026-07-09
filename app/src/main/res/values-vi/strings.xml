@@ -10,7 +10,7 @@
     <string name="migration_fail">Không thể chuyển dữ liệu!</string>
     <string name="pull_down_to_refresh">Please pull down to refresh!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">Ngắt kết nối v2rayNG</string>
     <string name="toast_permission_denied">Vui lòng cấp quyền cần thiết cho v2rayNG! Bạn đã từ chối các quyền cần thiết như Camera hay Bộ nhớ?</string>
     <string name="toast_permission_denied_notification">Unable to obtain the notification permission</string>
@@ -20,7 +20,7 @@
     <string name="toast_services_success">Đã khởi động v2rayNG!</string>
     <string name="toast_services_failure">Không thể khởi động v2rayNG, kiểm tra lại cấu hình!</string>
 
-    <!--ServerActivity-->
+    
     <string name="title_server">v2rayNG</string>
     <string name="menu_item_add_config">Thêm cấu hình</string>
     <string name="menu_item_save_config">Lưu cấu hình</string>
@@ -123,7 +123,7 @@
     <string name="toast_fetch_cert_sha256_success">Certificate fingerprint fetched successfully</string>
     <string name="toast_fetch_cert_sha256_failed">Failed to fetch certificate fingerprint</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">Không thể sao chép tệp tin, hãy dùng trình quản lý tệp!</string>
     <string name="menu_item_add_file">Thêm tệp</string>
     <string name="menu_item_scan_qrcode">Quét mã QR</string>
@@ -134,7 +134,7 @@
     <string name="msg_remark_is_duplicate">Nhận xét đã tồn tại!</string>
     <string name="asset_geo_files_sources">Geo files source (optional)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">Đang tải...</string>
     <string name="menu_item_search">Tìm kiếm</string>
     <string name="menu_item_select_all">Chọn tất cả</string>
@@ -149,7 +149,7 @@
     <string name="per_app_proxy_settings_enable">Enable per-app</string>
 
 
-    <!-- Preferences -->
+    
     <string name="title_settings">Cài đặt</string>
     <string name="title_advanced">Cài đặt nâng cao</string>
     <string name="title_core_settings">Cài đặt lõi</string>
@@ -254,7 +254,7 @@
 
     <string name="title_pref_group_all_display">Enable show all groups</string>
     <string name="summary_pref_group_all_display">Add an extra "All Tabs" page</string>
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">Phản hồi lỗi</string>
     <string name="summary_pref_feedback">Phản hồi cải tiến hoặc lỗi lên GitHub</string>
     <string name="summary_pref_tg_group">Tham gia nhóm Telegram</string>
@@ -327,7 +327,7 @@
     <string name="tasker_start_service">Khởi động v2rayNG</string>
     <string name="tasker_setting_confirm">Xác nhận</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">Chiến lược tên miền (DomainStrategy)</string>
     <string name="routing_settings_title">Cài đặt định tuyến</string>
     <string name="routing_settings_tips">Phân cách bằng dấu phẩy (,). Chọn một trong: domain, ip hoặc process</string>
@@ -388,7 +388,7 @@
     <string name="server_proxy_chain_members_insufficient">Insufficient members</string>
     <string name="server_proxy_chain_members_invalid">Invalid chain members: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">Backup &amp; Restore</string>
     <string name="title_configuration_backup">Sao lưu cấu hình</string>
     <string name="title_configuration_restore">Khôi phục cấu hình</string>

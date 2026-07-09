@@ -10,7 +10,7 @@
     <string name="migration_fail">数据迁移失败啦!</string>
     <string name="pull_down_to_refresh">请下拉刷新!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">停止</string>
     <string name="toast_permission_denied">无法取得权限</string>
     <string name="toast_permission_denied_notification">无法取得通知权限</string>
@@ -20,7 +20,7 @@
     <string name="toast_services_success">启动服务成功</string>
     <string name="toast_services_failure">启动服务失败</string>
 
-    <!--ServerActivity-->
+    
     <string name="title_server">配置项</string>
     <string name="menu_item_add_config">添加配置</string>
     <string name="menu_item_save_config">保存配置</string>
@@ -126,7 +126,7 @@
     <string name="toast_fetch_cert_sha256_success">获取指纹证书完成</string>
     <string name="toast_fetch_cert_sha256_failed">获取证书指纹失败</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">失败, 请使用文件管理器</string>
     <string name="menu_item_add_file">添加文件</string>
     <string name="menu_item_scan_qrcode">扫描 QRcode</string>
@@ -137,7 +137,7 @@
     <string name="msg_remark_is_duplicate">备注已经存在</string>
     <string name="asset_geo_files_sources">Geo 文件来源 (可选)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">正在加载</string>
     <string name="menu_item_search">搜索</string>
     <string name="menu_item_select_all">全选</string>
@@ -151,7 +151,7 @@
     <string name="per_app_proxy_settings">分应用设置</string>
     <string name="per_app_proxy_settings_enable">启用分应用</string>
 
-    <!-- Preferences -->
+    
     <string name="title_settings">设置</string>
     <string name="title_advanced">进阶设置</string>
     <string name="title_core_settings">核心设置</string>
@@ -255,7 +255,7 @@
     <string name="title_pref_group_all_display">启用显示所有组</string>
     <string name="summary_pref_group_all_display">添加一个额外的“所有选项卡”页面</string>
 
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">反馈</string>
     <string name="summary_pref_feedback">反馈改进或漏洞至 GitHub</string>
     <string name="summary_pref_tg_group">加入 Telegram Group</string>
@@ -328,7 +328,7 @@
     <string name="tasker_start_service">启动服务</string>
     <string name="tasker_setting_confirm">确定</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">域名策略</string>
     <string name="routing_settings_title">路由设置</string>
     <string name="routing_settings_tips">用逗号（,）分隔，选择填写 domain、ip 或 process 中的一项</string>
@@ -390,7 +390,7 @@
     <string name="server_proxy_chain_members_insufficient">成员数量不足</string>
     <string name="server_proxy_chain_members_invalid">无效的链路成员: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">备份 &amp; 还原</string>
     <string name="title_configuration_backup">备份配置</string>
     <string name="title_configuration_restore">还原配置</string>

@@ -17,13 +17,7 @@ object SpeedtestManager {
 
     private val tcpTestingSockets = ArrayList<Socket?>()
 
-    /**
-     * Measures the TCP connection time to a given URL and port.
-     *
-     * @param url The URL to connect to.
-     * @param port The port to connect to.
-     * @return The connection time in milliseconds, or -1 if the connection failed.
-     */
+    
     suspend fun tcping(url: String, port: Int): Long {
         var time = -1L
         for (k in 0 until 2) {
@@ -38,13 +32,7 @@ object SpeedtestManager {
         return time
     }
 
-    /**
-     * Measures the time taken to establish a TCP connection to a given URL and port.
-     *
-     * @param url The URL to connect to.
-     * @param port The port to connect to.
-     * @return The connection time in milliseconds, or -1 if the connection failed.
-     */
+    
     fun socketConnectTime(url: String, port: Int): Long {
         try {
             val socket = Socket()
@@ -69,9 +57,7 @@ object SpeedtestManager {
         return -1
     }
 
-    /**
-     * Closes all TCP sockets that are currently being tested.
-     */
+    
     fun closeAllTcpSockets() {
         synchronized(this) {
             tcpTestingSockets.forEach {

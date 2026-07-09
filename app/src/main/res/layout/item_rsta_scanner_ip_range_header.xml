@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="عنوان"
+    android:textColor="@color/rsta_scanner_found_count"
+    android:textSize="13sp"
+    android:textStyle="bold"
+    android:background="@color/rsta_scanner_header_bg"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="10dp" />

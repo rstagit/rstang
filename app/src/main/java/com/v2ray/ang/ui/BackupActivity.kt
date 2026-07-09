@@ -38,7 +38,7 @@ class BackupActivity : HelperBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(binding.root)
+        
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = getString(R.string.title_configuration_backup_restore))
 
         binding.layoutBackup.setOnClickListener {
@@ -90,10 +90,7 @@ class BackupActivity : HelperBaseActivity() {
         }
     }
 
-    /**
-     * Backup configuration to cache directory
-     * Returns Pair<success, zipFilePath>
-     */
+    
     private fun backupConfigurationToCache(): Pair<Boolean, String> {
         val dateFormatted = SimpleDateFormat(
             "yyyy-MM-dd-HH-mm-ss",
@@ -167,13 +164,13 @@ class BackupActivity : HelperBaseActivity() {
                 try {
                     val ret = backupConfigurationToCache()
                     if (ret.first) {
-                        // Copy the cached zip file to user-selected location
+                        
                         contentResolver.openOutputStream(uri)?.use { output ->
                             File(ret.second).inputStream().use { input ->
                                 input.copyTo(output)
                             }
                         }
-                        // Clean up cache file
+                        
                         File(ret.second).delete()
                         toastSuccess(R.string.toast_success)
                     } else {

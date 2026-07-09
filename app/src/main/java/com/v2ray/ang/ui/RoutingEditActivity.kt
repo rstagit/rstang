@@ -71,26 +71,22 @@ class RoutingEditActivity : BaseActivity() {
             .distinct()
     }
 
-    /**
-     * Sets up the AutoCompleteTextView for outbound tag:
-     * suggestions = built-in tags (proxy/direct/block) + all existing profile remarks.
-     * The dropdown button triggers showing the full list without typing.
-     */
+    
     private fun setupOutboundTagInput() {
         val profileRemarks = SettingsManager.getProfileRemarks()
 
         val suggestions = (BUILTIN_OUTBOUND_TAGS.toList() + profileRemarks).distinct()
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
         binding.spOutboundTag.setAdapter(adapter)
-        // threshold=0 means show all suggestions even before typing; still need focus+request
+        
         binding.spOutboundTag.threshold = 0
 
-        // Dropdown arrow button shows the full suggestion list
+        
         binding.btnOutboundTagDropdown.setOnClickListener {
             binding.spOutboundTag.requestFocus()
             binding.spOutboundTag.showDropDown()
         }
-        // Also show on field click when it already has focus
+        
         binding.spOutboundTag.setOnClickListener {
             binding.spOutboundTag.showDropDown()
         }
@@ -105,7 +101,7 @@ class RoutingEditActivity : BaseActivity() {
         binding.etPort.text = Utils.getEditable(rulesetItem.port)
         binding.etProtocol.text = Utils.getEditable(rulesetItem.protocol?.joinToString(","))
         binding.etNetwork.text = Utils.getEditable(rulesetItem.network)
-        // Set text directly; filter won't fire because we're not using setText(filter=true)
+        
         binding.spOutboundTag.setText(rulesetItem.outboundTag, false)
         return true
     }
@@ -155,7 +151,7 @@ class RoutingEditActivity : BaseActivity() {
                     }
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    // do nothing
+                    
                 }
                 .show()
         }

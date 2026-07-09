@@ -74,18 +74,18 @@ data class V2rayConfig(
         data class OutSettingsBean(
             var vnext: List<VnextBean>? = null,
             var servers: List<ServersBean>? = null,
-            /*Blackhole*/
+            
             var response: Response? = null,
-            /*DNS*/
+            
             val network: String? = null,
             var address: Any? = null,
             var port: Int? = null,
-            /*Freedom*/
+            
             val redirect: String? = null,
             val userLevel: Int? = null,
-            /*Loopback*/
+            
             val inboundTag: String? = null,
-            /*Wireguard*/
+            
             var secretKey: String? = null,
             val peers: List<WireGuardBean>? = null,
             var reserved: List<Int>? = null,
@@ -236,7 +236,7 @@ data class V2rayConfig(
             data class HappyEyeballsBean(
                 var prioritizeIPv6: Boolean? = null,
                 var maxConcurrentTry: Int? = 4,
-                var tryDelayMs: Int? = 250, // ms
+                var tryDelayMs: Int? = 250, 
                 var interleave: Int? = null,
             )
 
@@ -255,7 +255,7 @@ data class V2rayConfig(
                 var echConfigList: String? = null,
                 var verifyPeerCertByName: String? = null,
                 var pinnedPeerCertSha256: String? = null,
-                // REALITY settings
+                
                 var publicKey: String? = null,
                 var shortId: String? = null,
                 var spiderX: String? = null,
@@ -283,7 +283,7 @@ data class V2rayConfig(
                 var auth: String? = null
             )
 
-            //https://xtls.github.io/config/transport.html#finalmaskobject
+            
             data class FinalMaskBean(
                 var tcp: List<MaskBean>? = null,
                 var udp: List<MaskBean>? = null,
@@ -297,20 +297,20 @@ data class V2rayConfig(
                         val password: String? = null,
                         val header: String? = null,
                         val value: String? = null,
-                        // fragment
+                        
                         val packets: String? = null,
                         val length: String? = null,
                         val delay: String? = null,
-                        // val maxSplit: String? = null,
-                        // noise
+                        
+                        
                         val reset: Int? = null,
                         val noise: List<NoiseMaskBean>? = null
                     ) {
                         data class NoiseMaskBean(
                             val rand: String? = null,
-                            // val randRange: String? = null,
-                            // val type: String? = null,
-                            // val packet: String? = null,
+                            
+                            
+                            
                             val delay: String? = null,
                         )
                     }
@@ -322,7 +322,7 @@ data class V2rayConfig(
                     var brutalDown: String? = null,
                     var udpHop: UdpHopBean? = null,
                 ) {
-                    // Nested data class for the udpHop JSON object
+                    
                     data class UdpHopBean(
                         var ports: String? = null,
                         var interval: String? = null
@@ -446,7 +446,7 @@ data class V2rayConfig(
         )
 
         data class StrategyObject(
-            val type: String = "random", // "random" | "roundRobin" | "leastPing" | "leastLoad"
+            val type: String = "random", 
             val settings: StrategySettingsObject? = null
         )
 
@@ -503,7 +503,7 @@ data class V2rayConfig(
     data class FakednsBean(
         var ipPool: String = "198.18.0.0/15",
         var poolSize: Int = 10000
-    ) // roughly 10 times smaller than total ip pool
+    ) 
 
     fun getProxyOutbound(): OutboundBean? {
         outbounds.forEach { outbound ->

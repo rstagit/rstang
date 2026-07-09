@@ -10,7 +10,7 @@
     <string name="migration_fail">資料遷移失敗！</string>
     <string name="pull_down_to_refresh">請下拉刷新!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">停止</string>
     <string name="toast_permission_denied">無法取得此權限</string>
     <string name="toast_permission_denied_notification">無法取得此通知權限</string>
@@ -20,7 +20,7 @@
     <string name="toast_services_success">啟動服務成功</string>
     <string name="toast_services_failure">啟動服務失敗</string>
 
-    <!-- ServerActivity -->
+    
     <string name="title_server">設定檔</string>
     <string name="menu_item_add_config">新增設定</string>
     <string name="menu_item_save_config">儲存設定</string>
@@ -124,7 +124,7 @@
     <string name="toast_fetch_cert_sha256_success">獲取指紋證書完成</string>
     <string name="toast_fetch_cert_sha256_failed">獲取證書指紋失敗</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">失敗，請使用檔案總管</string>
     <string name="menu_item_add_file">新增檔案</string>
     <string name="menu_item_scan_qrcode">掃描二維碼</string>
@@ -135,7 +135,7 @@
     <string name="msg_remark_is_duplicate">備註已經存在</string>
     <string name="asset_geo_files_sources">Geo 檔案來源 (可選)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">載入</string>
     <string name="menu_item_search">搜尋</string>
     <string name="menu_item_select_all">全選</string>
@@ -150,7 +150,7 @@
     <string name="per_app_proxy_settings_enable">根據應用分流</string>
 
 
-    <!-- Preferences -->
+    
     <string name="title_settings">設定</string>
     <string name="title_advanced">進階</string>
     <string name="title_core_settings">核心設定</string>
@@ -254,7 +254,7 @@
     <string name="title_pref_group_all_display">啟用顯示所有群組</string>
     <string name="summary_pref_group_all_display">新增一個額外的「所有選項卡」頁面</string>
 
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">意見回饋</string>
     <string name="summary_pref_feedback">前往 GitHub 回報錯誤</string>
     <string name="summary_pref_tg_group">加入 Telegram 群組</string>
@@ -326,7 +326,7 @@
     <string name="tasker_start_service">啟動服務</string>
     <string name="tasker_setting_confirm">確定</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">網域策略</string>
     <string name="routing_settings_title">轉送設定</string>
     <string name="routing_settings_tips">用逗號（,）分隔，選擇填寫 domain、ip 或 process 中的一項</string>
@@ -388,7 +388,7 @@
     <string name="server_proxy_chain_members_insufficient">成員數量不足</string>
     <string name="server_proxy_chain_members_invalid">無效的鏈路成員: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">備份與恢復</string>
     <string name="title_configuration_backup">備份設定</string>
     <string name="title_configuration_restore">還原設定</string>

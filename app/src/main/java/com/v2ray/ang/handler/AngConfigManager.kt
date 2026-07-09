@@ -30,7 +30,7 @@ import java.net.URI
 
 object AngConfigManager {
 
-    // Parser mapping for different config types (lazy initialized)
+    
     private val configFmtParsers: Map<String, (String) -> ProfileItem?> by lazy {
         mapOf(
             EConfigType.VMESS.protocolScheme to VmessFmt::parse,
@@ -46,13 +46,7 @@ object AngConfigManager {
         )
     }
 
-    /**
-     * Shares the configuration to the clipboard.
-     *
-     * @param context The context.
-     * @param guid The GUID of the configuration.
-     * @return The result code.
-     */
+    
     fun share2Clipboard(context: Context, guid: String): Int {
         try {
             val conf = shareConfig(guid)
@@ -69,13 +63,7 @@ object AngConfigManager {
         return 0
     }
 
-    /**
-     * Shares non-custom configurations to the clipboard.
-     *
-     * @param context The context.
-     * @param serverList The list of server GUIDs.
-     * @return The number of configurations shared.
-     */
+    
     fun shareNonCustomConfigsToClipboard(context: Context, serverList: List<String>): Int {
         try {
             val sb = StringBuilder()
@@ -97,12 +85,7 @@ object AngConfigManager {
         }
     }
 
-    /**
-     * Shares the configuration as a QR code.
-     *
-     * @param guid The GUID of the configuration.
-     * @return The QR code bitmap.
-     */
+    
     fun share2QRCode(guid: String): Bitmap? {
         try {
             val conf = shareConfig(guid)
@@ -117,13 +100,7 @@ object AngConfigManager {
         }
     }
 
-    /**
-     * Shares the full content of the configuration to the clipboard.
-     *
-     * @param context The context.
-     * @param guid The GUID of the configuration.
-     * @return The result code.
-     */
+    
     fun shareFullContent2Clipboard(context: Context, guid: String?): Int {
         try {
             if (guid == null) return -1
@@ -140,12 +117,7 @@ object AngConfigManager {
         return 0
     }
 
-    /**
-     * Shares the configuration.
-     *
-     * @param guid The GUID of the configuration.
-     * @return The configuration string.
-     */
+    
     private fun shareConfig(guid: String): String {
         try {
             val config = MmkvManager.decodeServerConfig(guid) ?: return ""
@@ -166,14 +138,7 @@ object AngConfigManager {
         }
     }
 
-    /**
-     * Imports a batch of configurations.
-     *
-     * @param server The server string.
-     * @param subid The subscription ID.
-     * @param append Whether to append the configurations.
-     * @return A pair containing the number of configurations and subscriptions imported.
-     */
+    
     fun importBatchConfig(server: String?, subid: String, append: Boolean): Pair<Int, Int> {
         var count = parseBatchConfig(Utils.decode(server), subid, append)
         if (count <= 0) {
@@ -194,12 +159,7 @@ object AngConfigManager {
         return count to countSub
     }
 
-    /**
-     * Parses a batch of subscriptions.
-     *
-     * @param servers The servers string.
-     * @return The number of subscriptions parsed.
-     */
+    
     private fun parseBatchSubscription(servers: String?): Int {
         try {
             if (servers == null) {
@@ -221,25 +181,18 @@ object AngConfigManager {
         return 0
     }
 
-    /**
-     * Parses a batch of configurations.
-     *
-     * @param servers The servers string.
-     * @param subid The subscription ID.
-     * @param append Whether to append the configurations.
-     * @return The number of configurations parsed.
-     */
+    
     private fun parseBatchConfig(servers: String?, subid: String, append: Boolean): Int {
         try {
             if (servers == null) {
                 return 0
             }
-            // Find the currently selected server that belongs to the same subscription before replacement.
+            
             val removedSelected = getRemovedSelectedProfile(subid, append)
 
             val subItem = MmkvManager.decodeSubscription(subid)
 
-            // Parse all configs first (no I/O during parsing)
+            
             val configs = mutableListOf<ProfileItem>()
             servers.lines()
                 .distinct()
@@ -251,7 +204,7 @@ object AngConfigManager {
                     }
                 }
 
-            // Batch save all parsed configs (only one serverList read/write)
+            
             if (configs.isNotEmpty()) {
                 if (!append) {
                     MmkvManager.removeServerViaSubid(subid)
@@ -268,23 +221,16 @@ object AngConfigManager {
         return 0
     }
 
-    /**
-     * Batch save configurations to reduce serverList read/write operations.
-     * Reads serverList once, saves all configs, then writes serverList once.
-     *
-     * @param configs The list of ProfileItem to save.
-     * @param subid The subscription ID.
-     * @return Map of generated keys to their corresponding ProfileItem.
-     */
+    
     private fun batchSaveConfigs(configs: List<ProfileItem>, subid: String): Map<String, ProfileItem> {
         val keyToProfile = mutableMapOf<String, ProfileItem>()
 
-        // Read serverList once
+        
         val serverList = MmkvManager.decodeServerList(subid)
 
         configs.forEach { config ->
             val key = Utils.getUuid()
-            // Save profile directly without updating serverList
+            
             MmkvManager.encodeProfileDirect(key, JsonUtil.toJson(config))
 
             if (!serverList.contains(key)) {
@@ -293,28 +239,17 @@ object AngConfigManager {
             keyToProfile[key] = config
         }
 
-        // Write serverList once
+        
         MmkvManager.encodeServerList(serverList, subid)
         return keyToProfile
     }
 
-    /**
-     * Finds a matched profile key from the given key-profile map using multi-level matching.
-     * Matching priority (from highest to lowest):
-     * 1. Exact match: server + port + password
-     * 2. Match by remarks (exact match)
-     * 3. Match by server + port
-     * 4. Match by server only
-     *
-     * @param keyToProfile Map of server keys to their ProfileItem
-     * @param target Target profile to match
-     * @return Matched key or null
-     */
+    
     private fun findMatchedProfileKey(keyToProfile: Map<String, ProfileItem>, target: ProfileItem?): String? {
         if (keyToProfile.isEmpty()) return null
         if (target == null) return null
 
-        // Level 0: Full match (remarks + server + port + password)
+        
         if (target.remarks.isNotBlank()) {
             keyToProfile.entries.firstOrNull { (_, saved) ->
                 isSameText(saved.remarks, target.remarks) &&
@@ -324,38 +259,36 @@ object AngConfigManager {
             }?.key?.let { return it }
         }
 
-        // Level 1: Match by remarks
+        
         if (target.remarks.isNotBlank()) {
             keyToProfile.entries.firstOrNull { (_, saved) ->
                 isSameText(saved.remarks, target.remarks)
             }?.key?.let { return it }
         }
 
-        // Level 2: Exact match (server + port + password)
+        
         keyToProfile.entries.firstOrNull { (_, saved) ->
             isSameText(saved.server, target.server) &&
                     isSameText(saved.serverPort, target.serverPort) &&
                     isSameText(saved.password, target.password)
         }?.key?.let { return it }
 
-        // Level 3: Match by server + port
+        
         keyToProfile.entries.firstOrNull { (_, saved) ->
             isSameText(saved.server, target.server) &&
                     isSameText(saved.serverPort, target.serverPort)
         }?.key?.let { return it }
 
-        // Level 4: Match by server only
+        
         keyToProfile.entries.firstOrNull { (_, saved) ->
             isSameText(saved.server, target.server)
         }?.key?.let { return it }
 
-        // If old selected node cannot be matched, fall back to the first imported config.
+        
         return keyToProfile.keys.firstOrNull()
     }
 
-    /**
-     * Returns the currently selected profile if it belongs to the target subscription and will be replaced.
-     */
+    
     private fun getRemovedSelectedProfile(subid: String, append: Boolean): ProfileItem? {
         if (subid.isBlank() || append) return null
 
@@ -365,26 +298,13 @@ object AngConfigManager {
             ?.takeIf { it.subscriptionId == subid }
     }
 
-    /**
-     * Case-insensitive trimmed string comparison.
-     *
-     * @param left First string
-     * @param right Second string
-     * @return True if both are non-empty and equal (case-insensitive, trimmed)
-     */
+    
     private fun isSameText(left: String?, right: String?): Boolean {
         if (left.isNullOrBlank() || right.isNullOrBlank()) return false
         return left.trim().equals(right.trim(), ignoreCase = true)
     }
 
-    /**
-     * Parses a custom configuration server.
-     *
-     * @param server The server string.
-     * @param subid The subscription ID.
-     * @param append Whether to append the configurations.
-     * @return The number of configurations parsed.
-     */
+    
     private fun parseCustomConfigServer(server: String?, subid: String, append: Boolean): Int {
         if (server == null) {
             return 0
@@ -424,7 +344,7 @@ object AngConfigManager {
             }
 
             try {
-                // For compatibility
+                
                 val config = CustomFmt.parse(server) ?: return 0
                 config.subscriptionId = subid
                 config.description = generateDescription(config)
@@ -457,15 +377,7 @@ object AngConfigManager {
         }
     }
 
-    /**
-     * Parses the configuration from a QR code or string.
-     * Only parses and returns ProfileItem, does not save.
-     *
-     * @param str The configuration string.
-     * @param subid The subscription ID.
-     * @param subItem The subscription item.
-     * @return The parsed ProfileItem or null if parsing fails or filtered out.
-     */
+    
     private fun parseConfig(
         str: String?,
         subid: String,
@@ -484,7 +396,7 @@ object AngConfigManager {
                 return null
             }
 
-            // Apply filter
+            
             if (subItem?.filter.isNotNullEmpty() && config.remarks.isNotNullEmpty()) {
                 val matched = Regex(pattern = subItem?.filter.orEmpty())
                     .containsMatchIn(input = config.remarks)
@@ -501,11 +413,7 @@ object AngConfigManager {
         }
     }
 
-    /**
-     * Updates the configuration via all subscriptions.
-     *
-     * @return Detailed result of the subscription update operation.
-     */
+    
     fun updateConfigViaSubAll(): SubscriptionUpdateResult {
         return try {
             val subscriptions = MmkvManager.decodeSubscriptions()
@@ -518,20 +426,15 @@ object AngConfigManager {
         }
     }
 
-    /**
-     * Updates the configuration via a subscription.
-     *
-     * @param it The subscription item.
-     * @return Subscription update result.
-     */
+    
     fun updateConfigViaSub(it: SubscriptionCache): SubscriptionUpdateResult {
         try {
-            // Check if disabled
+            
             if (!it.subscription.enabled) {
                 return SubscriptionUpdateResult(skipCount = 1)
             }
 
-            // Validate subscription info
+            
             if (TextUtils.isEmpty(it.guid)
                 || TextUtils.isEmpty(it.subscription.remarks)
                 || TextUtils.isEmpty(it.subscription.url)
@@ -596,7 +499,7 @@ object AngConfigManager {
                     successCount = 1
                 )
             } else {
-                // Got response but no valid configs parsed
+                
                 return SubscriptionUpdateResult(failureCount = 1)
             }
         } catch (e: Exception) {
@@ -605,14 +508,7 @@ object AngConfigManager {
         }
     }
 
-    /**
-     * Parses the configuration via a subscription.
-     *
-     * @param server The server string.
-     * @param subid The subscription ID.
-     * @param append Whether to append the configurations.
-     * @return The number of configurations parsed.
-     */
+    
     private fun parseConfigViaSub(server: String?, subid: String, append: Boolean): Int {
         var count = parseBatchConfig(Utils.decode(server), subid, append)
         if (count <= 0) {
@@ -624,12 +520,7 @@ object AngConfigManager {
         return count
     }
 
-    /**
-     * Imports a URL as a subscription.
-     *
-     * @param url The URL.
-     * @return The number of subscriptions imported.
-     */
+    
     private fun importUrlAsSubscription(url: String): Int {
         val subscriptions = MmkvManager.decodeSubscriptions()
         subscriptions.forEach {
@@ -645,13 +536,9 @@ object AngConfigManager {
         return 1
     }
 
-    /** Generates a description for the profile.
-     *
-     * @param profile The profile item.
-     * @return The generated description.
-     */
+    
     fun generateDescription(profile: ProfileItem): String {
-        // Hide xxx:xxx:***/xxx.xxx.xxx.***
+        
         val server = profile.server
         val port = profile.serverPort
         if (server.isNullOrBlank() && port.isNullOrBlank()) return ""

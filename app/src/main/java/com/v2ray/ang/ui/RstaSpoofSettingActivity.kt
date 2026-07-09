@@ -9,16 +9,7 @@ import com.v2ray.ang.R
 import com.v2ray.ang.helper.MmkvPreferenceDataStore
 import com.v2ray.ang.rsta.RstaSpoofEngine
 
-/**
- * Settings screen for the RSTA Spoof local SNI-spoof proxy.
- *
- * This only configures the parameters the bundled native engine actually
- * accepts (connect IP/port, fake SNI, bypass method). The engine itself is
- * started/stopped automatically by CoreServiceManager whenever the active
- * server profile points at 127.0.0.1:40443 - there's no manual enable
- * toggle here, matching the requirement that it "just works" for those
- * configs without extra steps.
- */
+
 class RstaSpoofSettingActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,8 +54,8 @@ class RstaSpoofSettingActivity : BaseActivity() {
             
             statusPref?.summary = RstaSpoofEngine.statusSummary()
             
-            // Auto-refresh summary if it shows "inactive" but we expect it to be starting
-            // or if it shows an error.
+            
+            
         }
 
         private fun showLogDialog() {

@@ -42,8 +42,8 @@
         android:name=".AngApplication"
         android:allowBackup="true"
         android:banner="@mipmap/ic_banner"
-        android:icon="@drawable/ic_stat_proxy"
-        android:roundIcon="@drawable/ic_stat_direct"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
@@ -89,6 +89,12 @@
             android:exported="false" />
         <activity
             android:name=".ui.RstaSpoofSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.RstaScannerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.RstaScannerIpRangeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.PerAppProxyActivity"
@@ -221,6 +227,16 @@
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="test" />
+        </service>
+
+        <service
+            android:name=".service.RstaScannerService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":RunSoLibV2RayDaemon">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="scan" />
         </service>
 
         <receiver

@@ -10,7 +10,7 @@
     <string name="migration_fail">انتقال داده انجام نشد!</string>
     <string name="pull_down_to_refresh">لطفاً برای تازه کردن، پایین بکشید!</string>
 
-    <!-- Notifications -->
+    
     <string name="notification_action_stop_v2ray">توقف</string>
     <string name="toast_permission_denied">دریافت مجوز امکان پذیر نیست</string>
     <string name="toast_permission_denied_notification">دریافت مجوز اعلان امکان پذیر نیست</string>
@@ -20,7 +20,7 @@
     <string name="toast_services_success">شروع خدمات با موفقیت انجام شد</string>
     <string name="toast_services_failure">شروع خدمات با موفقیت انجام نشد!</string>
 
-    <!--ServerActivity-->
+    
     <string name="title_server">فایل کانفیگ</string>
     <string name="menu_item_add_config">افزودن کانفیگ</string>
     <string name="menu_item_save_config">ذخیره کانفیگ</string>
@@ -141,7 +141,7 @@
     <string name="toast_fetch_cert_sha256_success">Certificate fingerprint fetched successfully</string>
     <string name="toast_fetch_cert_sha256_failed">Failed to fetch certificate fingerprint</string>
 
-    <!-- UserAssetActivity -->
+    
     <string name="toast_asset_copy_failed">کپی فایل انجام نشد، لطفا از برنامه مدیریت فایل استفاده کنید</string>
     <string name="menu_item_add_file">افزودن فایل ‌ها</string>
     <string name="menu_item_scan_qrcode">اسکن QRcode</string>
@@ -152,7 +152,7 @@
     <string name="msg_remark_is_duplicate">نام قبلاً وجود دارد</string>
     <string name="asset_geo_files_sources">منبع فایل های جغرافیایی (اختیاری)</string>
 
-    <!-- PerAppProxyActivity -->
+    
     <string name="msg_dialog_progress">بارگذاری</string>
     <string name="menu_item_search">جستجو</string>
     <string name="menu_item_select_all">انتخاب همه</string>
@@ -166,7 +166,7 @@
     <string name="per_app_proxy_settings">تنظیمات به تفکیک برنامه</string>
     <string name="per_app_proxy_settings_enable">فعال کردن به تفکیک برنامه</string>
 
-    <!-- Preferences -->
+    
     <string name="title_settings">تنظیمات</string>
     <string name="title_advanced">تنظیمات پیشرفته</string>
     <string name="title_core_settings">تنظیمات هسته</string>
@@ -270,7 +270,7 @@
 
     <string name="title_pref_group_all_display">Enable show all groups</string>
     <string name="summary_pref_group_all_display">Add an extra "All Tabs" page</string>
-    <!-- AboutActivity -->
+    
     <string name="title_pref_feedback">بازخورد</string>
     <string name="summary_pref_feedback">بازخورد یا گزارش اشکالات در گیت‌ هاب</string>
     <string name="summary_pref_tg_group">عضویت در گروه تلگرام</string>
@@ -309,6 +309,52 @@
     <string name="title_del_invalid_config">حذف کانفیگ های نامعتبر گروه فعلی (ابتدا آزمایش کنید)</string>
     <string name="title_export_all">خروجی گرفتن کانفیگ های غیرسفارشی گروه فعلی در کلیپ ‌بورد</string>
     <string name="title_rsta_spoof_setting">RSTA Spoof</string>
+    <string name="title_rsta_scanner_setting">RSTA Scanner</string>
+    <string name="title_rsta_scanner_ip_range">انتخاب رنج آی‌پی</string>
+    <string name="rsta_scanner_telegram_hint">تلگرام جهت آپدیت و گزارش باگ ها : @rstatel</string>
+    <string name="rsta_scanner_label_cidr">آدرس CIDR</string>
+    <string name="rsta_scanner_btn_ip_range_settings">تنظیمات آی‌پی رنج</string>
+    <string name="rsta_scanner_hint_cidr">"مثال:\n104.16.174.0/24\n104.17.0.0/24"</string>
+    <string name="rsta_scanner_hint_cidr_multi">چند رنج را با فاصله یا در خط جدا وارد کنید</string>
+    <string name="rsta_scanner_label_config">کانفیگ V2Ray (vmess/vless/trojan/ss)</string>
+    <string name="rsta_scanner_hint_config">vmess:// یا vless:// یا trojan:// یا ss://</string>
+    <string name="rsta_scanner_hint_config_note">کانفیگ سالم یا فیلترشده وارد کنید</string>
+    <string name="rsta_scanner_label_ports">پورت‌ها (امکان انتخاب چندگانه)</string>
+    <string name="rsta_scanner_hint_custom_ports">پورت دلخواه (اختیاری) - مثال: 8080,9443</string>
+    <string name="rsta_scanner_hint_custom_ports_note">پورت دلخواه را با کاما جدا کنید. هنگام اسکن VPN را خاموش کنید یا برنامه را در حالت بدون تونل بگذارید.</string>
+    <string name="rsta_scanner_btn_start">شروع اسکن</string>
+    <string name="rsta_scanner_btn_stop">توقف اسکن</string>
+    <string name="rsta_scanner_processed_count">پردازش شده: %1$d / %2$d</string>
+    <string name="rsta_scanner_found_count">یافت شده: %1$d</string>
+    <string name="rsta_scanner_btn_copy_all_ips">کپی همه IP‌ها</string>
+    <string name="rsta_scanner_btn_copy_all_configs">کپی همه کانفیگ‌ها</string>
+    <string name="rsta_scanner_btn_top10_ping">کپی ۱۰ برتر پینگ</string>
+    <string name="rsta_scanner_label_count">تعداد:</string>
+    <string name="rsta_scanner_btn_speed_test">تست سرعت برترین‌ها</string>
+    <string name="rsta_scanner_btn_speed_test_testing">در حال تست...</string>
+    <string name="rsta_scanner_btn_speed_test_default">تست سرعت ۲۰ برتر</string>
+    <string name="rsta_scanner_btn_stop_speed_test">توقف</string>
+    <string name="rsta_scanner_btn_copy_speed_results">کپی نتایج</string>
+    <string name="rsta_scanner_btn_copy_speed_ips">کپی IP تست‌شده</string>
+    <string name="rsta_scanner_speed_progress">تست سرعت: %1$d از %2$d</string>
+    <string name="rsta_scanner_no_results">هیچ IP سالمی یافت نشد\nپردازش شده: %1$d / %2$d</string>
+    <string name="rsta_scanner_copied">کپی شد</string>
+    <string name="rsta_scanner_err_no_cidr">لطفاً حداقل یک CIDR وارد کنید. مثال: 104.16.174.0/24</string>
+    <string name="rsta_scanner_err_invalid_cidr">فرمت CIDR نامعتبر است: %1$s</string>
+    <string name="rsta_scanner_err_no_config">لطفاً یک کانفیگ وارد کنید</string>
+    <string name="rsta_scanner_err_unsupported_config">فرمت کانفیگ پشتیبانی نمی‌شود.\nفقط vmess://, vless://, trojan://, ss:// قبول می‌شود</string>
+    <string name="rsta_scanner_err_no_port">حداقل یک پورت را انتخاب یا وارد کنید</string>
+    <string name="rsta_scanner_err_invalid_port">پورت دلخواه نامعتبر است: %1$s (باید بین 1 تا 65535 باشد)</string>
+    <string name="rsta_scanner_notif_scanning">در حال اسکن...</string>
+    <string name="rsta_scanner_btn_copy_ip">کپی IP</string>
+    <string name="rsta_scanner_btn_copy_config">کپی کانفیگ</string>
+    <string name="rsta_scanner_selected_count">%1$d انتخاب شده</string>
+    <string name="rsta_scanner_hint_search_range">جستجوی رنج (مثال: 104.16)</string>
+    <string name="rsta_scanner_btn_select_all">انتخاب همه</string>
+    <string name="rsta_scanner_btn_deselect_all">حذف همه تیک‌ها</string>
+    <string name="rsta_scanner_btn_confirm_selection">اعمال انتخاب</string>
+    <string name="rsta_scanner_header_curated">رنج‌های پرکاربرد (%1$d مورد)</string>
+    <string name="rsta_scanner_header_others">سایر رنج‌های Cloudflare (%1$d مورد)</string>
     <string name="title_sub_setting">تنظیمات گروه‌ اشتراک</string>
     <string name="sub_setting_remarks">ملاحظات</string>
     <string name="sub_setting_url">نشانی اینترنتی اختیاری</string>
@@ -343,7 +389,7 @@
     <string name="tasker_start_service">شروع خدمات</string>
     <string name="tasker_setting_confirm">تایید</string>
 
-    <!-- RoutingSettingActivity -->
+    
     <string name="routing_settings_domain_strategy">استراتژی دامنه</string>
     <string name="routing_settings_title">تنظیمات مسیریابی</string>
     <string name="routing_settings_tips">با کاما (,) جدا کنید. یکی از موارد domain، ip یا process را وارد کنید</string>
@@ -405,7 +451,7 @@
     <string name="server_proxy_chain_members_insufficient">تعداد اعضا کافی نیست</string>
     <string name="server_proxy_chain_members_invalid">اعضای نامعتبر زنجیره: %1$s</string>
 
-    <!-- BackupActivity -->
+    
     <string name="title_configuration_backup_restore">پشتیبان‌گیری و بازیابی</string>
     <string name="title_configuration_backup">پشتیبان گیری از پیکربندی</string>
     <string name="title_configuration_restore">بازیابی پیکربندی</string>

@@ -57,12 +57,12 @@ class MainRecyclerAdapter(
 
             holder.itemView.setBackgroundColor(Color.TRANSPARENT)
 
-            //Name address
+            
             holder.itemMainBinding.tvName.text = profile.remarks
             holder.itemMainBinding.tvStatistics.text = getAddress(profile)
             holder.itemMainBinding.tvType.text = getProtocolDescription(profile)
 
-            //TestResult
+            
             val aff = MmkvManager.decodeServerAffiliationInfo(guid)
             holder.itemMainBinding.tvTestResult.text = aff?.getTestDelayString().orEmpty()
             if ((aff?.testDelayMillis ?: 0L) < 0L) {
@@ -71,19 +71,19 @@ class MainRecyclerAdapter(
                 holder.itemMainBinding.tvTestResult.setTextColor(ContextCompat.getColor(context, R.color.colorPing))
             }
 
-            //layoutIndicator
+            
             if (guid == MmkvManager.getSelectServer()) {
                 holder.itemMainBinding.layoutIndicator.setBackgroundResource(R.color.colorIndicator)
             } else {
                 holder.itemMainBinding.layoutIndicator.setBackgroundResource(0)
             }
 
-            //subscription remarks
+            
             val subRemarks = getSubscriptionRemarks(profile)
             holder.itemMainBinding.tvSubscription.text = subRemarks
             holder.itemMainBinding.layoutSubscription.visibility = if (subRemarks.isEmpty()) View.GONE else View.VISIBLE
 
-            //layout
+            
             if (doubleColumnDisplay) {
                 holder.itemMainBinding.layoutShare.visibility = View.GONE
                 holder.itemMainBinding.layoutEdit.visibility = View.GONE
@@ -118,21 +118,12 @@ class MainRecyclerAdapter(
 
     }
 
-    /**
-     * Gets the server address information
-     * Hides part of IP or domain information for privacy protection
-     * @param profile The server configuration
-     * @return Formatted address string
-     */
+    
     private fun getAddress(profile: ProfileItem): String {
         return profile.description.nullIfBlank() ?: AngConfigManager.generateDescription(profile)
     }
 
-    /**
-     * Gets the subscription remarks information
-     * @param profile The server configuration
-     * @return Subscription remarks string, or empty string if none
-     */
+    
     private fun getSubscriptionRemarks(profile: ProfileItem): String {
         val subRemarks =
             if (mainViewModel.subscriptionId.isEmpty())
@@ -150,18 +141,18 @@ class MainRecyclerAdapter(
         val parts = mutableListOf<String>()
         parts.add(profile.configType.name)
 
-        // Transport: hide tcp or blank
+        
         profile.network?.let { net ->
             if (net.isNotBlank() && !net.equals("tcp", ignoreCase = true)) {
                 parts.add(net)
             }
         }
 
-        // Security: hide blank or tls
+        
         profile.security?.let { sec ->
             if (sec.isNotBlank()) {
                 if (profile.insecure == true && sec.equals("tls", ignoreCase = true)) {
-                    parts.add("$sec insecure") // TODO
+                    parts.add("$sec insecure") 
                 } else {
                     parts.add(sec)
                 }
@@ -229,7 +220,7 @@ class MainRecyclerAdapter(
     }
 
     override fun onItemMoveCompleted() {
-        // do nothing
+        
     }
 
     override fun onItemDismiss(position: Int) {

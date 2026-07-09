@@ -41,7 +41,7 @@ class PerAppProxyActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(binding.root)
+        
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = getString(R.string.per_app_proxy_settings))
 
         addCustomDividerToRecyclerView(binding.recyclerView, this, R.drawable.custom_divider)
@@ -211,7 +211,7 @@ class PerAppProxyActivity : BaseActivity() {
                 ) ?: ""
             }
             launch(Dispatchers.Main) {
-                //LogUtil.i(AppConfig.TAG, content)
+                
                 selectProxyApp(content, true)
                 toastSuccess(R.string.toast_success)
                 hideLoading()

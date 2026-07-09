@@ -95,9 +95,9 @@ class ServerActivity : BaseActivity() {
     }
 
 
-    // Kotlin synthetics was used, but since it is removed in 1.8. We switch to old manual approach.
-    // We don't use AndroidViewBinding because, it is better to share similar logics for different
-    // protocols. Use findViewById manually ensures the xml are de-coupled with the activity logic.
+    
+    
+    
     private val et_remarks: EditText by lazy { findViewById(R.id.et_remarks) }
     private val et_address: EditText by lazy { findViewById(R.id.et_address) }
     private val et_port: EditText by lazy { findViewById(R.id.et_port) }
@@ -110,7 +110,7 @@ class ServerActivity : BaseActivity() {
     private val container_allow_insecure: LinearLayout? by lazy { findViewById(R.id.lay_allow_insecure) }
     private val et_sni: EditText? by lazy { findViewById(R.id.et_sni) }
     private val container_sni: LinearLayout? by lazy { findViewById(R.id.lay_sni) }
-    private val sp_stream_fingerprint: Spinner? by lazy { findViewById(R.id.sp_stream_fingerprint) } //uTLS
+    private val sp_stream_fingerprint: Spinner? by lazy { findViewById(R.id.sp_stream_fingerprint) } 
     private val container_fingerprint: LinearLayout? by lazy { findViewById(R.id.lay_stream_fingerprint) }
     private val sp_network: Spinner? by lazy { findViewById(R.id.sp_network) }
     private val sp_header_type: Spinner? by lazy { findViewById(R.id.sp_header_type) }
@@ -119,7 +119,7 @@ class ServerActivity : BaseActivity() {
     private val et_request_host: EditText? by lazy { findViewById(R.id.et_request_host) }
     private val tv_path: TextView? by lazy { findViewById(R.id.tv_path) }
     private val et_path: EditText? by lazy { findViewById(R.id.et_path) }
-    private val sp_stream_alpn: Spinner? by lazy { findViewById(R.id.sp_stream_alpn) } //uTLS
+    private val sp_stream_alpn: Spinner? by lazy { findViewById(R.id.sp_stream_alpn) } 
     private val container_alpn: LinearLayout? by lazy { findViewById(R.id.lay_stream_alpn) }
     private val et_public_key: EditText? by lazy { findViewById(R.id.et_public_key) }
     private val et_preshared_key: EditText? by lazy { findViewById(R.id.et_preshared_key) }
@@ -204,7 +204,7 @@ class ServerActivity : BaseActivity() {
 
                 et_request_host?.text = Utils.getEditable(
                     when (networks[position]) {
-                        //"quic" -> config?.quicSecurity
+                        
                         NetworkType.GRPC.type -> config?.authority
                         else -> config?.host
                     }.orEmpty()
@@ -212,7 +212,7 @@ class ServerActivity : BaseActivity() {
                 et_path?.text = Utils.getEditable(
                     when (networks[position]) {
                         NetworkType.KCP.type -> config?.seed
-                        //"quic" -> config?.quicKey
+                        
                         NetworkType.GRPC.type -> config?.serviceName
                         else -> config?.path
                     }.orEmpty()
@@ -226,7 +226,7 @@ class ServerActivity : BaseActivity() {
                             NetworkType.HTTP_UPGRADE.type -> R.string.server_lab_request_host_httpupgrade
                             NetworkType.XHTTP.type -> R.string.server_lab_request_host_xhttp
                             NetworkType.H2.type -> R.string.server_lab_request_host_h2
-                            //"quic" -> R.string.server_lab_request_host_quic
+                            
                             NetworkType.GRPC.type -> R.string.server_lab_request_host_grpc
                             else -> R.string.server_lab_request_host
                         }
@@ -241,7 +241,7 @@ class ServerActivity : BaseActivity() {
                             NetworkType.HTTP_UPGRADE.type -> R.string.server_lab_path_httpupgrade
                             NetworkType.XHTTP.type -> R.string.server_lab_path_xhttp
                             NetworkType.H2.type -> R.string.server_lab_path_h2
-                            //"quic" -> R.string.server_lab_path_quic
+                            
                             NetworkType.GRPC.type -> R.string.server_lab_path_grpc
                             else -> R.string.server_lab_path
                         }
@@ -278,7 +278,7 @@ class ServerActivity : BaseActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // do nothing
+                
             }
         }
         sp_stream_security?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -292,7 +292,7 @@ class ServerActivity : BaseActivity() {
                 val isTLS = streamSecuritys[position] == TLS
 
                 when {
-                    // Case 1: Null or blank
+                    
                     isBlank -> {
                         listOf(
                             container_sni,
@@ -309,7 +309,7 @@ class ServerActivity : BaseActivity() {
                         ).forEach { it?.visibility = View.GONE }
                     }
 
-                    // Case 2: TLS value
+                    
                     isTLS -> {
                         listOf(
                             container_sni,
@@ -328,7 +328,7 @@ class ServerActivity : BaseActivity() {
                         ).forEach { it?.visibility = View.GONE }
                     }
 
-                    // Case 3: Other reality values
+                    
                     else -> {
                         listOf(
                             container_sni,
@@ -352,7 +352,7 @@ class ServerActivity : BaseActivity() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                // do nothing
+                
             }
         }
         btn_pinned_ca256_action?.setOnClickListener {
@@ -365,9 +365,7 @@ class ServerActivity : BaseActivity() {
         }
     }
 
-    /**
-     * binding selected server config
-     */
+    
     private fun bindingServer(config: ProfileItem): Boolean {
 
         et_remarks.text = Utils.getEditable(config.remarks)
@@ -448,9 +446,7 @@ class ServerActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * clear or init server config
-     */
+    
     private fun clearServer(): Boolean {
         et_remarks.text = null
         et_address.text = null
@@ -466,7 +462,7 @@ class ServerActivity : BaseActivity() {
         sp_allow_insecure?.setSelection(0)
         et_sni?.text = null
 
-        //et_security.text = null
+        
         sp_flow?.setSelection(0)
         et_public_key?.text = null
         et_reserved1?.text = Utils.getEditable("0,0,0")
@@ -477,9 +473,7 @@ class ServerActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * save server config
-     */
+    
     private fun saveServer(): Boolean {
         if (TextUtils.isEmpty(et_remarks.text.toString())) {
             toast(R.string.server_lab_remarks)
@@ -540,7 +534,7 @@ class ServerActivity : BaseActivity() {
         if (config.subscriptionId.isEmpty() && !subscriptionId.isNullOrEmpty()) {
             config.subscriptionId = subscriptionId.orEmpty()
         }
-        //LogUtil.i(AppConfig.TAG, JsonUtil.toJsonPretty(config) ?: "")
+        
         MmkvManager.encodeServerConfig(editGuid, config)
         if (isRunning) {
             SettingsChangeManager.makeRestartService()
@@ -718,9 +712,7 @@ class ServerActivity : BaseActivity() {
         }
     }
 
-    /**
-     * delete server config
-     */
+    
     private fun deleteServer(): Boolean {
         if (editGuid.isNotEmpty()) {
             if (editGuid != MmkvManager.getSelectServer()) {
@@ -731,7 +723,7 @@ class ServerActivity : BaseActivity() {
                             finish()
                         }
                         .setNegativeButton(android.R.string.cancel) { _, _ ->
-                            // do nothing
+                            
                         }
                         .show()
                 } else {

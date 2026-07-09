@@ -34,7 +34,7 @@ class SubEditActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(binding.root)
+        
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = getString(R.string.title_sub_setting))
 
         setupProfileRemarkInputs()
@@ -47,9 +47,7 @@ class SubEditActivity : BaseActivity() {
         }
     }
 
-    /**
-     * binding selected server config
-     */
+    
     private fun bindingServer(subItem: SubscriptionItem): Boolean {
         binding.etRemarks.text = Utils.getEditable(subItem.remarks)
         binding.etUrl.text = Utils.getEditable(subItem.url)
@@ -64,9 +62,7 @@ class SubEditActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * clear or init server config
-     */
+    
     private fun clearServer(): Boolean {
         binding.etRemarks.text = null
         binding.etUrl.text = null
@@ -109,9 +105,7 @@ class SubEditActivity : BaseActivity() {
         }
     }
 
-    /**
-     * save server config
-     */
+    
     private fun saveServer(): Boolean {
         val subItem = MmkvManager.decodeSubscription(editSubId) ?: SubscriptionItem()
 
@@ -125,9 +119,9 @@ class SubEditActivity : BaseActivity() {
         val intervalInput = binding.etUpdateInterval.text.toString().trim()
         val intervalMinutes = intervalInput.toLongOrNull()
         if (subItem.autoUpdate) {
-            // autoUpdate is enabled: interval must be valid
+            
             if (intervalMinutes == null) {
-                // field is empty, reset to default
+                
                 subItem.updateInterval = SubscriptionItem().updateInterval
             } else if (intervalMinutes < AppConfig.SUBSCRIPTION_MIN_INTERVAL_MINUTES) {
                 toast(R.string.toast_invalid_update_interval)
@@ -136,7 +130,7 @@ class SubEditActivity : BaseActivity() {
                 subItem.updateInterval = intervalMinutes
             }
         } else {
-            // autoUpdate is disabled: save only if the value is valid, otherwise keep the existing value
+            
             if (intervalMinutes != null && intervalMinutes >= AppConfig.SUBSCRIPTION_MIN_INTERVAL_MINUTES) {
                 subItem.updateInterval = intervalMinutes
             }
@@ -171,9 +165,7 @@ class SubEditActivity : BaseActivity() {
         return true
     }
 
-    /**
-     * save server config
-     */
+    
     private fun deleteServer(): Boolean {
         if (editSubId.isNotEmpty()) {
             if (MmkvManager.decodeSettingsBool(AppConfig.PREF_CONFIRM_REMOVE)) {
@@ -187,7 +179,7 @@ class SubEditActivity : BaseActivity() {
                         }
                     }
                     .setNegativeButton(android.R.string.cancel) { _, _ ->
-                        // do nothing
+                        
                     }
                     .show()
             } else {
