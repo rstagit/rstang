@@ -29,7 +29,7 @@ class DialerWebviewService : IDialerService {
     override fun start(context: Context, dialerAddr: String) {
         if (webView != null) stop()
         if (dialerAddr.isEmpty()) return
-        val dialerUrl = "http:
+        val dialerUrl = "http://${dialerAddr}"
 
         webView = WebView(context.applicationContext).apply {
             settings.apply {

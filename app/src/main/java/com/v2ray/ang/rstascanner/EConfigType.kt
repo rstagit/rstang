@@ -6,5 +6,5 @@ enum class EConfigType(val protocolScheme: String) {
     TROJAN(ScannerConfig.TROJAN),
     SHADOWSOCKS(ScannerConfig.SHADOWSOCKS),
     SOCKS(ScannerConfig.SOCKS),
-    CUSTOM("custom:
+    CUSTOM("custom://")
 }

@@ -254,12 +254,14 @@ class DialerNativeService : IDialerService {
         return URI(probeScheme, uri.userInfo, host, uri.port, "/", null, null).toString()
     }
 
-    private fun parseDialerUri(rawAddr: String): URI? {
+    private fun parseDialerUri(rawAddr: String): java.net.URI? {
         val normalized = rawAddr.trim()
         if (normalized.isEmpty()) return null
-        return runCatching {
-            if (normalized.contains(":
-        }.getOrNull()
+        return try {
+            if (normalized.contains("://")) java.net.URI(normalized) else null
+        } catch (e: Exception) {
+            null
+        }
     }
 
     private fun extractControlToken(html: String): String? {

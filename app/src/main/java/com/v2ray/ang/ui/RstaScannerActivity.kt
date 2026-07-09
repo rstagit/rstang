@@ -231,7 +231,8 @@ class RstaScannerActivity : BaseActivity() {
 
         binding.tvTelegram.setOnClickListener {
             try {
-                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https:
+                val url = "https://t.me/rstatel"
+                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))
                 startActivity(intent)
             } catch (_: Exception) {}
         }
@@ -480,10 +481,9 @@ class RstaScannerActivity : BaseActivity() {
 
     
     private fun measureDownloadSpeed(): Double {
-        val urls = listOf(
-            "https:
-            "https:
-        )
+        val url1 = "https://speed.cloudflare.com/__down?bytes=50000000"
+        val url2 = "https://httpbin.org/bytes/10485760"
+        val urls = listOf(url1, url2)
         for (url in urls) {
             var conn: HttpURLConnection? = null
             try {
@@ -521,11 +521,10 @@ class RstaScannerActivity : BaseActivity() {
     
     
     private fun measureUploadSpeed(): Double {
-        val urls = listOf(
-            "https:
-            "https:
-            "https:
-        )
+        val url1 = "https://speed.cloudflare.com/__up"
+        val url2 = "https://httpbin.org/post"
+        val url3 = "https://postman-echo.com/post"
+        val urls = listOf(url1, url2, url3)
         val payload = ByteArray(512 * 1024) 
         for (url in urls) {
             var totalBytes = 0L

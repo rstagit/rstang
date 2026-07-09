@@ -106,21 +106,21 @@ object AppConfig {
     const val UPLINK = "uplink"
     const val DOWNLINK = "downlink"
 
-    const val GITHUB_URL = "https:
-    const val GITHUB_RAW_URL = "https:
+    const val GITHUB_URL = "https://github.com"
+    const val GITHUB_RAW_URL = "https://raw.githubusercontent.com"
     const val GITHUB_DOWNLOAD_URL = "$GITHUB_URL/%s/releases/latest/download"
     const val ANDROID_PACKAGE_NAME_LIST_URL = "$GITHUB_RAW_URL/2dust/androidpackagenamelist/master/proxy.txt"
     const val APP_URL = "$GITHUB_URL/rstagit/rstang"
-    const val APP_API_URL = "https:
+    const val APP_API_URL = "https://api.github.com/repos/rstagit/rstang"
     const val APP_ISSUES_URL = "$APP_URL/issues"
     const val APP_WIKI_MODE = "$APP_URL/wiki/Mode"
     const val APP_PRIVACY_POLICY = "$GITHUB_RAW_URL/2dust/v2rayNG/master/CR.md"
     const val APP_PROMOTION_URL = "aHR0cHM6Ly85LjIzNDQ1Ni54eXovYWJjLmh0bWw="
-    const val TG_CHANNEL_URL = "https:
-    const val DELAY_TEST_URL = "http:
-    const val DELAY_TEST_URL2 = "http:
+    const val TG_CHANNEL_URL = "https://t.me/rstatel"
+    const val DELAY_TEST_URL = "http://www.gstatic.com/generate_204"
+    const val DELAY_TEST_URL2 = "http://cp.cloudflare.com/generate_204"
 
-    const val IP_API_URL = "https:
+    const val IP_API_URL = "https://api.ipify.org?format=json"
 
     const val DNS_PROXY = "1.1.1.1"
     const val DNS_DIRECT = "223.5.5.5"
@@ -164,20 +164,20 @@ object AppConfig {
     const val RAY_NG_CHANNEL_ID = "RAY_NG_M_CH_ID"
     const val RAY_NG_CHANNEL_NAME = "RSTA NG Background Service"
 
-    const val VMESS = "vmess:
-    const val CUSTOM = ""
-    const val SHADOWSOCKS = "ss:
-    const val SOCKS = "socks:
-    const val SOCKS4 = "socks4:
-    const val SOCKS5 = "socks5:
-    const val HTTP = "http:
-    const val VLESS = "vless:
-    const val TROJAN = "trojan:
-    const val WIREGUARD = "wireguard:
-    const val TUIC = "tuic:
-    const val HYSTERIA = "hysteria:
-    const val HYSTERIA2 = "hysteria2:
-    const val HY2 = "hy2:
+    const val VMESS = "vmess"
+    const val CUSTOM = "custom"
+    const val SHADOWSOCKS = "ss"
+    const val SOCKS = "socks"
+    const val SOCKS4 = "socks4"
+    const val SOCKS5 = "socks5"
+    const val HTTP = "http"
+    const val VLESS = "vless"
+    const val TROJAN = "trojan"
+    const val WIREGUARD = "wireguard"
+    const val TUIC = "tuic"
+    const val HYSTERIA = "hysteria"
+    const val HYSTERIA2 = "hysteria2"
+    const val HY2 = "hy2"
 
     const val VPN = "VPN"
     const val VPN_MTU = 1500
@@ -193,7 +193,7 @@ object AppConfig {
     const val DNS_CLOUDFLARE_ONE_DOMAIN = "one.one.one.one"
     const val DNS_CLOUDFLARE_ONEDOT_DNS_DOMAIN = "1dot1dot1dot1.cloudflare-dns.com"
     const val DNS_CLOUDFLARE_DNS_COM_DOMAIN = "dns.cloudflare.com"
-    const val DNS_CLOUDFLARE_DNS_DOMAIN = "cloudflare-dns.com"
+    const val DNS_CLOUDFLARE_DNS_DOMAIN = "dns.cloudflare.com"
     const val DNS_CLOUDFLARE_WARP_DOMAIN = "engage.cloudflareclient.com"
     const val DNS_DNSPOD_DOH_DOMAIN = "doh.pub"
     const val DNS_DNSPOD_DOT_DOMAIN = "dot.pub"

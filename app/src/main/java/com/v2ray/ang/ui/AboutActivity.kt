@@ -1,6 +1,7 @@
 package com.v2ray.ang.ui
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import com.v2ray.ang.AppConfig
 import com.v2ray.ang.BuildConfig
 import com.v2ray.ang.R
@@ -17,17 +18,19 @@ class AboutActivity : BaseActivity() {
         setContentViewWithToolbar(binding.root, showHomeAsUp = true, title = getString(R.string.title_about))
 
         binding.layoutSoureCcode.setOnClickListener {
-            Utils.openUri(this, AppConfig.APP_URL)
+            val url = AppConfig.APP_URL
+            Utils.openUri(this, url)
         }
 
         binding.layoutFeedback.setOnClickListener {
-            Utils.openUri(this, AppConfig.APP_ISSUES_URL)
+            val url = AppConfig.APP_ISSUES_URL
+            Utils.openUri(this, url)
         }
 
         binding.layoutOssLicenses.setOnClickListener {
             val webView = android.webkit.WebView(this)
-            webView.loadUrl("file:
-            android.app.AlertDialog.Builder(this)
+            webView.loadUrl("file:///android_asset/licenses.html")
+            AlertDialog.Builder(this)
                 .setTitle("Open source licenses")
                 .setView(webView)
                 .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
@@ -35,11 +38,13 @@ class AboutActivity : BaseActivity() {
         }
 
         binding.layoutTgChannel.setOnClickListener {
-            Utils.openUri(this, AppConfig.TG_CHANNEL_URL)
+            val url = AppConfig.TG_CHANNEL_URL
+            Utils.openUri(this, url)
         }
 
         binding.layoutPrivacyPolicy.setOnClickListener {
-            Utils.openUri(this, AppConfig.APP_PRIVACY_POLICY)
+            val url = AppConfig.APP_PRIVACY_POLICY
+            Utils.openUri(this, url)
         }
 
         "v${BuildConfig.VERSION_NAME} (${CoreNativeManager.getLibVersion()})".also {
