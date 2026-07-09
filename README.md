@@ -1,3 +1,6 @@
+<img width="1080" height="2170" alt="Screenshot_20260709_210241_RSTA NG" src="https://github.com/user-attachments/assets/026d2164-320b-4abc-acca-ada54c89be87" />
+<img width="1080" height="2170" alt="Screenshot_20260709_210253_RSTA NG" src="https://github.com/user-attachments/assets/4cbdabdd-b9ac-4d97-b5c7-f014782b999d" />
+<img width="1080" height="2170" alt="Screenshot_20260709_210305_RSTA NG" src="https://github.com/user-attachments/assets/40df7820-6c52-4243-a61e-98b003768984" />
 # RSTA NG - فورک V2RayNG با اتصال خودکار و دور زدن فیلترینگ
 
 **RSTang** یک فورک اصلاح‌شده از [V2RayNG](https://github.com/2dust/v2rayNG) است که با قابلیت‌های مدیریت خودکار اتصال، اسپوف ترافیک و تکنیک‌های پیشرفته برای عبور از فیلترینگ تقویت شده است.
