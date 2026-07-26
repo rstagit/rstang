@@ -24,6 +24,8 @@ import com.v2ray.ang.AppConfig
 import com.v2ray.ang.R
 import com.v2ray.ang.core.CoreServiceManager
 import com.v2ray.ang.databinding.ActivityMainBinding
+import com.v2ray.ang.dto.UrlContentRequest
+import com.v2ray.ang.dto.entities.SubscriptionItem
 import com.v2ray.ang.enums.EConfigType
 import com.v2ray.ang.enums.PermissionType
 import com.v2ray.ang.extension.toast
@@ -33,6 +35,7 @@ import com.v2ray.ang.handler.MmkvManager
 import com.v2ray.ang.handler.SettingsChangeManager
 import com.v2ray.ang.handler.SettingsManager
 import com.v2ray.ang.handler.SubscriptionUpdater
+import com.v2ray.ang.util.HttpUtil
 import com.v2ray.ang.util.LogUtil
 import com.v2ray.ang.util.Utils
 import com.v2ray.ang.viewmodel.MainViewModel
@@ -40,6 +43,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val binding by lazy {
@@ -76,12 +82,23 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
 
         setupNavigationDrawer()
 
+        binding.viewPager.registerOnPageChangeCallback(object : androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                val subId = groupPagerAdapter.groups.getOrNull(position)?.id ?: ""
+                mainViewModel.subscriptionId = subId
+                MmkvManager.encodeSettings(AppConfig.CACHE_SUBSCRIPTION_ID, subId)
+                
+                binding.switchAutoConnect.isChecked = MmkvManager.decodeSettingsBool(AppConfig.PREF_AUTO_CONNECT_BEST_PING + "_" + subId, true)
+                mainViewModel.reloadServerList()
+            }
+        })
+
         binding.fab.setOnClickListener { handleFabAction() }
         binding.layoutTest.setOnClickListener { handleLayoutTestClick() }
 
-        binding.switchAutoConnect.isChecked = MmkvManager.decodeSettingsBool(AppConfig.PREF_AUTO_CONNECT_BEST_PING, false)
         binding.switchAutoConnect.setOnCheckedChangeListener { _, isChecked ->
-            MmkvManager.encodeSettings(AppConfig.PREF_AUTO_CONNECT_BEST_PING, isChecked)
+            MmkvManager.encodeSettings(AppConfig.PREF_AUTO_CONNECT_BEST_PING + "_" + mainViewModel.subscriptionId, isChecked)
         }
 
         setupGroupTab()
@@ -509,6 +526,67 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
         return true
     }
 
+    private fun downloadConfigFromInternet() {
+        showLoading()
+        val url = "https://raw.githubusercontent.com/barry-far/V2ray-Config/main/All_Configs_Sub.txt"
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val content = HttpUtil.getUrlContentWithUserAgent(UrlContentRequest(url))
+                if (content.isBlank()) {
+                    withContext(Dispatchers.Main) {
+                        toastError(R.string.toast_failure)
+                        hideLoading()
+                    }
+                    return@launch
+                }
+
+                // Remove old "internet" subscriptions
+                val oldSubs = MmkvManager.decodeSubscriptions()
+                oldSubs.forEach {
+                    if (it.subscription.remarks.startsWith("internet ")) {
+                        MmkvManager.removeServerViaSubid(it.guid)
+                        MmkvManager.removeSubscription(it.guid)
+                    }
+                }
+
+                val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+                val timeStr = sdf.format(Date())
+                val remarks = "internet $timeStr"
+                
+                val subItem = SubscriptionItem().apply {
+                    this.remarks = remarks
+                    this.url = ""
+                }
+                val subId = Utils.getUuid()
+                MmkvManager.encodeSubscription(subId, subItem)
+
+                val (count, _) = AngConfigManager.importBatchConfig(content, subId, true)
+
+                withContext(Dispatchers.Main) {
+                    if (count > 0) {
+                        toast(getString(R.string.title_import_config_count, count))
+                        mainViewModel.subscriptionId = subId
+                        mainViewModel.reloadServerList()
+                        setupGroupTab()
+
+                        // Start testing with 512 concurrency and auto-connect to best
+                        mainViewModel.removeAfterTest = true
+                        mainViewModel.startAutoConnectBestPing(512)
+                    } else {
+                        toastError(R.string.toast_failure)
+                    }
+                    hideLoading()
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    toastError(R.string.toast_failure)
+                    hideLoading()
+                }
+                LogUtil.e(AppConfig.TAG, "Failed to download config from internet", e)
+            }
+        }
+    }
+
     private fun exportAll() {
         showLoading()
         lifecycleScope.launch(Dispatchers.IO) {
@@ -656,6 +734,7 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
         when (item.itemId) {
             R.id.rsta_spoof_setting -> requestActivityLauncher.launch(Intent(this, RstaSpoofSettingActivity::class.java))
             R.id.rsta_scanner_setting -> requestActivityLauncher.launch(Intent(this, RstaScannerActivity::class.java))
+            R.id.download_config_internet -> downloadConfigFromInternet()
             R.id.sub_setting -> requestActivityLauncher.launch(Intent(this, SubSettingActivity::class.java))
             R.id.per_app_proxy_settings -> requestActivityLauncher.launch(Intent(this, PerAppProxyActivity::class.java))
             R.id.routing_setting -> requestActivityLauncher.launch(Intent(this, RoutingSettingActivity::class.java))

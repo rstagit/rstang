@@ -22,10 +22,11 @@ import java.util.concurrent.atomic.AtomicInteger
 class RealPingWorkerService(
     private val context: Context,
     private val guids: List<String>,
+    private val realPingConcurrency: Int = 0,
     private val onEvent: (RealPingEvent) -> Unit = {}
 ) {
     private val job = SupervisorJob()
-    private val concurrency = SettingsManager.getRealPingConcurrency()
+    private val concurrency = if (realPingConcurrency > 0) realPingConcurrency else SettingsManager.getRealPingConcurrency()
     private val dispatcher = Executors.newFixedThreadPool(concurrency).asCoroutineDispatcher()
     private val scope = CoroutineScope(job + dispatcher + CoroutineName("RealPingBatchWorker"))
 

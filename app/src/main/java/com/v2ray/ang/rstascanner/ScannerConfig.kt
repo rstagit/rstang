@@ -15,6 +15,6 @@ object ScannerConfig {
     const val REALITY = "reality"
     const val NONE = "none"
 
-    const val SCAN_CONCURRENCY = 16
+    const val SCAN_CONCURRENCY = 256
     const val TCP_TIMEOUT_MS = 5000
 }

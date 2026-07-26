@@ -50,6 +50,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     
     val autoConnectFinished by lazy { MutableLiveData<Boolean>() }
     private var pendingAutoConnect = false
+    var removeAfterTest = false
     private val tcpingTestScope by lazy { CoroutineScope(Dispatchers.IO) }
 
     
@@ -185,7 +186,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     
-    fun testAllRealPing() {
+    fun testAllRealPing(realPingConcurrency: Int = 0) {
         MessageUtil.sendMsg2TestService(
             getApplication(),
             TestServiceMessage(key = AppConfig.MSG_MEASURE_CONFIG_CANCEL)
@@ -202,7 +203,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 TestServiceMessage(
                     key = AppConfig.MSG_MEASURE_CONFIG_START,
                     subscriptionId = subscriptionId,
-                    serverGuids = if (keywordFilter.isNotEmpty()) serversCache.map { it.guid } else emptyList()
+                    serverGuids = if (keywordFilter.isNotEmpty()) serversCache.map { it.guid } else emptyList(),
+                    realPingConcurrency = realPingConcurrency
                 )
             )
         }
@@ -381,13 +383,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     
-    fun startAutoConnectBestPing() {
+    fun startAutoConnectBestPing(realPingConcurrency: Int = 0) {
         if (serversCache.isEmpty()) {
             autoConnectFinished.value = false
             return
         }
         pendingAutoConnect = true
-        testAllRealPing()
+        testAllRealPing(realPingConcurrency)
     }
 
     
@@ -408,15 +410,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun onTestsFinished() {
         viewModelScope.launch(Dispatchers.Default) {
-            if (MmkvManager.decodeSettingsBool(AppConfig.PREF_AUTO_REMOVE_INVALID_AFTER_TEST)) {
+            if (removeAfterTest || MmkvManager.decodeSettingsBool(AppConfig.PREF_AUTO_REMOVE_INVALID_AFTER_TEST)) {
                 removeInvalidServer()
             }
+            removeAfterTest = false
 
             if (MmkvManager.decodeSettingsBool(AppConfig.PREF_AUTO_SORT_AFTER_TEST)) {
                 sortByTestResults()
             }
 
-            val wasPendingAutoConnect = pendingAutoConnect
+            val isAutoConnectEnabled = MmkvManager.decodeSettingsBool(AppConfig.PREF_AUTO_CONNECT_BEST_PING + "_" + subscriptionId, true)
+            val wasPendingAutoConnect = pendingAutoConnect || isAutoConnectEnabled
             val bestGuid = if (wasPendingAutoConnect) pickBestPingGuid() else null
             pendingAutoConnect = false
 

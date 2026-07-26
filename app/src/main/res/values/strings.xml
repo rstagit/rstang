@@ -321,6 +321,7 @@
     <string name="title_export_all">Export configs to clipboard</string>
     <string name="title_rsta_spoof_setting">RSTA Spoof</string>
     <string name="title_rsta_scanner_setting">RSTA Scanner</string>
+    <string name="menu_item_download_config_internet">Download Config from Internet</string>
     <string name="title_rsta_scanner_ip_range">Select IP Range</string>
     <string name="rsta_scanner_telegram_hint">Telegram channel for updates and bug reports: @rstatel</string>
     <string name="rsta_scanner_label_cidr">CIDR address</string>

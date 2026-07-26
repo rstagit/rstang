@@ -310,6 +310,7 @@
     <string name="title_export_all">خروجی گرفتن کانفیگ های غیرسفارشی گروه فعلی در کلیپ ‌بورد</string>
     <string name="title_rsta_spoof_setting">RSTA Spoof</string>
     <string name="title_rsta_scanner_setting">RSTA Scanner</string>
+    <string name="menu_item_download_config_internet">دانلود کانفیگ از اینترنت</string>
     <string name="title_rsta_scanner_ip_range">انتخاب رنج آی‌پی</string>
     <string name="rsta_scanner_telegram_hint">تلگرام جهت آپدیت و گزارش باگ ها : @rstatel</string>
     <string name="rsta_scanner_label_cidr">آدرس CIDR</string>

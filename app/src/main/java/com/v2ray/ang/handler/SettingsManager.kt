@@ -336,8 +336,8 @@ object SettingsManager {
 
     
     fun getRealPingConcurrency(): Int {
-        val value = MmkvManager.decodeSettingsString(AppConfig.PREF_REAL_PING_CONCURRENCY)?.toIntOrNull() ?: 16
-        return value.coerceIn(1, 128)
+        val value = MmkvManager.decodeSettingsString(AppConfig.PREF_REAL_PING_CONCURRENCY)?.toIntOrNull() ?: 255
+        return value.coerceIn(1, 512)
     }
 
     

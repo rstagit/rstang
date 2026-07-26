@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/bg_rsta_scanner_result_item"
-    android:layout_marginBottom="8dp"
-    android:padding="12dp">
+    android:layout_marginBottom="4dp"
+    android:padding="8dp">
 
     
     <LinearLayout
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="6dp">
 
         <TextView
             android:id="@+id/tv_ip"
@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:text="0.0.0.0"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:textDirection="ltr"
             android:fontFamily="monospace"
@@ -40,10 +40,10 @@
             android:textStyle="bold"
             android:textDirection="ltr"
             android:fontFamily="monospace"
-            android:paddingHorizontal="7dp"
-            android:paddingVertical="3dp"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
             android:background="@color/rsta_scanner_speed_badge"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="4dp"
             android:visibility="gone" />
 
         <TextView
@@ -52,12 +52,12 @@
             android:layout_height="wrap_content"
             android:text="--- ms"
             android:textColor="#FFFFFF"
-            android:textSize="13sp"
+            android:textSize="11sp"
             android:textStyle="bold"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="3dp"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
             android:background="@color/rsta_scanner_delay_good"
-            android:layout_marginStart="6dp" />
+            android:layout_marginStart="4dp" />
     </LinearLayout>
 
     
@@ -69,20 +69,26 @@
         <Button
             android:id="@+id/btn_copy_ip"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="32dp"
             android:layout_weight="1"
+            android:padding="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:text="@string/rsta_scanner_btn_copy_ip"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:backgroundTint="@color/rsta_scanner_btn_copy_ip_item"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="6dp" />
 
         <Button
             android:id="@+id/btn_copy_config"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="32dp"
             android:layout_weight="1"
+            android:padding="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:text="@string/rsta_scanner_btn_copy_config"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:backgroundTint="@color/rsta_scanner_btn_copy_config_item" />
     </LinearLayout>
 </LinearLayout>

@@ -82,6 +82,7 @@ class CoreTestService : Service() {
             worker = RealPingWorkerService(
                 context = this,
                 guids = guidsList,
+                realPingConcurrency = message.realPingConcurrency,
                 onEvent = { event -> handleWorkerEvent(event) { activeWorkers.remove(worker) } }
             )
             activeWorkers.add(worker)
