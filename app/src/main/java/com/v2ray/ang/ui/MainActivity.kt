@@ -559,6 +559,7 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
                 }
                 val subId = Utils.getUuid()
                 MmkvManager.encodeSubscription(subId, subItem)
+                MmkvManager.encodeSettings(AppConfig.PREF_AUTO_CONNECT_BEST_PING + "_" + subId, false)
 
                 val (count, _) = AngConfigManager.importBatchConfig(content, subId, true)
 
@@ -569,9 +570,9 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
                         mainViewModel.reloadServerList()
                         setupGroupTab()
 
-                        // Start testing with 512 concurrency and auto-connect to best
+                        // Start testing with 512 concurrency, but don't auto-connect by default
                         mainViewModel.removeAfterTest = true
-                        mainViewModel.startAutoConnectBestPing(512)
+                        mainViewModel.testAllRealPing(512)
                     } else {
                         toastError(R.string.toast_failure)
                     }
