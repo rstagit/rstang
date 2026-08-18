@@ -61,7 +61,7 @@ object ShadowsocksFmt : FmtBase() {
     
     fun parseLegacy(str: String): ProfileItem? {
         val config = ProfileItem.create(EConfigType.SHADOWSOCKS)
-        var result = str.replace(EConfigType.SHADOWSOCKS.protocolScheme, "")
+        var result = str.removePrefix(EConfigType.SHADOWSOCKS.protocolScheme).removePrefix("://")
         val indexSplit = result.indexOf("#")
         if (indexSplit > 0) {
             try {

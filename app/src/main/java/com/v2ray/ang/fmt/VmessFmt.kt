@@ -23,7 +23,7 @@ object VmessFmt : FmtBase() {
 
         val config = ProfileItem.create(EConfigType.VMESS)
 
-        var result = str.replace(EConfigType.VMESS.protocolScheme, "")
+        var result = str.removePrefix(EConfigType.VMESS.protocolScheme).removePrefix("://")
         result = Utils.decode(result)
         if (TextUtils.isEmpty(result)) {
             LogUtil.w(AppConfig.TAG, "Toast decoding failed")

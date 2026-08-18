@@ -15,6 +15,7 @@ import org.junit.Test
 import org.mockito.MockedStatic
 import org.mockito.Mockito
 import org.mockito.Mockito.mockStatic
+import android.util.Log
 import java.net.URLDecoder
 import java.util.Base64 as JavaBase64
 
@@ -22,7 +23,7 @@ import java.util.Base64 as JavaBase64
 class ShadowsocksFmtTest {
 
     companion object {
-        private const val SS_SCHEME = "ss:
+        private const val SS_SCHEME = "ss://"
     }
 
     private lateinit var mockBase64: MockedStatic<Base64>
@@ -131,7 +132,7 @@ class ShadowsocksFmtTest {
 
     @Test
     fun test_parseSip002_validUrlWithPlainTextUserinfo() {
-        val ssUrl = "ss:
+        val ssUrl = "ss://aes-256-gcm:mypassword@example.com:8388#Plain%20Server"
 
         val result = ShadowsocksFmt.parseSip002(ssUrl)
 

@@ -46,7 +46,7 @@
 
 ```bash
 # کلون کردن مخزن پروژه
-git clone [https://github.com/rstagit/rstang.git](https://github.com/rstagit/rstang.git)
+git clone https://github.com/rstagit/rstang.git
 
 # ورود به پوشه پروژه
 cd rstang
